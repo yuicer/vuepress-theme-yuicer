@@ -1,5 +1,10 @@
 <template>
-  <router-link class="nav-link" :to="link" v-if="!isExternal(link)" :exact="exact">{{ item.text }}</router-link>
+  <router-link
+    class="nav-link"
+    :to="link"
+    v-if="!isExternal(link)"
+    :exact="exact"
+  >{{ item.text }}</router-link>
   <a
     v-else
     :href="link"
@@ -23,15 +28,13 @@ export default {
   },
 
   computed: {
-    link() {
+    link () {
       return ensureExt(this.item.link)
     },
 
-    exact() {
+    exact () {
       if (this.$site.locales) {
-        return Object.keys(this.$site.locales).some(
-          rootLink => rootLink === this.link
-        )
+        return Object.keys(this.$site.locales).some(rootLink => rootLink === this.link)
       }
       return this.link === '/'
     }
