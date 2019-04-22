@@ -1,6 +1,6 @@
 {
   "name": "@yuicer/vuepress-theme-yuicer",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "> theme-vue for vuepress",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,6 @@
     "type": "git",
     "url": "git+https://github.com/yuicer/vuepress-theme-yuicer.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -18,15 +17,6 @@
   },
   "homepage": "https://github.com/yuicer/vuepress-theme-yuicer#readme",
   "dependencies": {
-    "@vuepress/plugin-active-header-links": "^1.0.0-alpha.32",
-    "@vuepress/plugin-blog": "^1.0.0-alpha.32",
-    "@vuepress/plugin-nprogress": "^1.0.0-alpha.32",
-    "@vuepress/plugin-pagination": "^1.0.0-alpha.32",
-    "@vuepress/plugin-search": "^1.0.0-alpha.32",
-    "@vuepress/shared-utils": "^1.0.0-alpha.32",
-    "@yubisaki/vuepress-plugin-pagination": "^0.1.7",
-    "docsearch.js": "^2.5.2",
-    "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.2"
+    "@vuepress/plugin-blog": "^1.0.0-alpha.47"
   }
 }
