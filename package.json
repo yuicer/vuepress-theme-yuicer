@@ -1,8 +1,13 @@
 {
   "name": "@yuicer/vuepress-theme-yuicer",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "> theme-vue for vuepress",
   "main": "index.js",
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +22,12 @@
   },
   "homepage": "https://github.com/yuicer/vuepress-theme-yuicer#readme",
   "dependencies": {
-    "@vuepress/plugin-blog": "^1.0.0-alpha.47"
+    "@vuepress/plugin-blog": "^1.0.0-alpha.47",
+    "moment": "^2.24.0"
+  },
+  "devDependencies": {
+    "husky": "^2.1.0",
+    "prettier": "1.17.0",
+    "pretty-quick": "^1.10.0"
   }
 }
