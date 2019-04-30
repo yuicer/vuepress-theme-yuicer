@@ -19,7 +19,7 @@ body
   color $textColor
 
 .page
-  padding-left $sidebarWidth
+  @extend $wrapper
 
 .navbar
   position fixed
@@ -28,37 +28,11 @@ body
   left 0
   right 0
   height $navbarHeight
-  background-color $coverColor
+  background-color $backgroundColor
+  box-shadow $boxShadow
   box-sizing border-box
-  border-bottom 1px solid $borderColor
-
-.sidebar-mask
-  position fixed
-  z-index 9
-  top 0
-  left 0
-  width 100vw
-  height 100vh
-  display none
-
-.sidebar
-  font-size 16px
-  background-color #fff
-  width $sidebarWidth
-  position fixed
-  z-index 10
-  margin 0
-  top $navbarHeight
-  left 0
-  bottom 0
-  box-sizing border-box
-  border-right 1px solid $borderColor
-  overflow-y auto
 
 .content:not(.custom)
-  @extend $wrapper
-  > *:first-child
-    margin-top $navbarHeight
   a:hover
     text-decoration underline
   p.demo
@@ -126,7 +100,6 @@ h1
 h2
   font-size 1.65rem
   padding-bottom .3rem
-  border-bottom 1px solid $borderColor
 
 h3
   font-size 1.35rem
@@ -167,22 +140,12 @@ th, td
   padding .6em 1em
 
 .theme-container
-  &.sidebar-open
-    .sidebar-mask
-      display: block
+  padding: 3.6rem 0;
+  min-height: 100vh;
+  box-sizing: border-box;
   &.no-navbar
     .content:not(.custom) > h1, h2, h3, h4, h5, h6
         margin-top 1.5rem
         padding-top 0
-    .sidebar
-      top 0
-
-
-@media (min-width: ($MQMobile + 1px))
-  .theme-container.no-sidebar
-    .sidebar
-      display none
-    .page
-      padding-left 0
 
 @require 'mobile.styl'
