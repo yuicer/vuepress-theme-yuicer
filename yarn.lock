@@ -12,6 +12,18 @@
   resolved "https://registry.yarnpkg.com/@vuepress/plugin-blog/-/plugin-blog-1.0.0-alpha.47.tgz#d453e79c1cd945ac9e4549984d9f0813219a8c1e"
   integrity sha512-8E4syDxQuSS1Ci9l6JjpbelmnboQjv4y4H1QllxqJJ5XsnMqW5KXMSkTK31+8tgTqWyEFcBdrOvEa2/5OEApAQ==
 
+"@vuepress/plugin-medium-zoom@^1.0.0-alpha.47":
+  version "1.0.0-alpha.47"
+  resolved "https://registry.yarnpkg.com/@vuepress/plugin-medium-zoom/-/plugin-medium-zoom-1.0.0-alpha.47.tgz#3616241a405df99960f8b329598c9bf399d8a0c2"
+  integrity sha512-pk3HUwMYIAWMY3wa96S9yv2QRX8vHOJ1GMb2dZMlAmMJk35J1YGWHVKX0zH6hqj789ZRw3zwnWdRr6uJIIztjg==
+  dependencies:
+    medium-zoom "^0.4.0"
+
+"@vuepress/plugin-pagination@^1.0.0-alpha.47":
+  version "1.0.0-alpha.47"
+  resolved "https://registry.yarnpkg.com/@vuepress/plugin-pagination/-/plugin-pagination-1.0.0-alpha.47.tgz#8b486bf40dfcea4b2a852be70595896a909e1fc3"
+  integrity sha512-a5bubGuYFsMQNdGA+ibcZLcZxZbTqxOchhBQL7EPsuv/+5wnAMgUJI6QRcUk3K6XEj6OjABhSgHTYh3JHclFdA==
+
 ansi-styles@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-3.2.1.tgz#41fbb20243e50b12be0f04b8dedbf07520ce841d"
@@ -324,6 +336,11 @@ lru-cache@^4.0.1:
   dependencies:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
+
+medium-zoom@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/medium-zoom/-/medium-zoom-0.4.0.tgz#8e13c9b754903c0c903220611af0d3cd373a4222"
+  integrity sha512-0z7yMfd6I1BTCAa8QaR4cp5AqDkQD571GzhHIbbfefKEssGLSvs+4Xai/itOAncm4FBlF5gUoMQ22yW9/f8Sig==
 
 minimatch@^3.0.4:
   version "3.0.4"

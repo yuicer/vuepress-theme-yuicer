@@ -2,7 +2,6 @@
 
 > theme-vue for vuepress
 
-
 ```
  npm i @yuicer/vuepress-theme-yuicer@latest
 ```
@@ -35,3 +34,12 @@
 ### 工具包
 
 - [ ] 自动生成文件模版，自动传服务器，类似 hexo 一样的工具包
+
+#### option
+
+```
+themeConfig:{
+  ...
+  bgImg: // 推荐填写完整的外链 url
+}
+```

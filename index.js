@@ -22,15 +22,17 @@ module.exports = (options, ctx) => ({
     [
       '@vuepress/plugin-blog',
       {
-        pageEnhancers: [
-          {
-            when: ({ regularPath }) => regularPath === '/',
-            frontmatter: { layout: 'Categories' || 'Layout' }
-          }
-        ]
+        // pageEnhancers: [
+        //   {
+        //     when: ({ regularPath }) => regularPath === '/',
+        //     frontmatter: { layout: 'Categories' || 'Layout' }
+        //   }
+        // ]
       }
     ],
     '@vuepress/search',
-    '@vuepress/plugin-nprogress'
+    '@vuepress/plugin-nprogress',
+    '@vuepress/medium-zoom',
+    '@vuepress/pagination'
   ]
 })

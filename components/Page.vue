@@ -1,21 +1,21 @@
 <template>
   <main class="page">
-    <slot name="top"/>
+    <slot name="top" />
 
     <div class="page-title">
-      <h2>{{$page.title}}</h2>
+      <span>{{ $page.title }}</span>
     </div>
 
     <div class="last-updated" v-if="lastUpdated">
       <span class="time">{{ lastUpdated }}</span>
     </div>
 
-    <Content/>
+    <Content />
 
     <footer class="page-edit">
       <div class="edit-link" v-if="editLink">
         <a :href="editLink" target="_blank" rel="noopener noreferrer">{{ editLinkText }}</a>
-        <OutboundLink/>
+        <OutboundLink />
       </div>
     </footer>
 
@@ -23,16 +23,19 @@
       <p class="inner">
         <span v-if="prev" class="prev">
           ←
-          <router-link v-if="prev" class="prev" :to="prev.path">{{ prev.title || prev.path }}</router-link>
+          <router-link v-if="prev" class="prev" :to="prev.path">{{
+            prev.title || prev.path
+          }}</router-link>
         </span>
 
         <span v-if="next" class="next">
-          <router-link v-if="next" :to="next.path">{{ next.title || next.path }}</router-link>→
+          <router-link v-if="next" :to="next.path">{{ next.title || next.path }}</router-link
+          >→
         </span>
       </p>
     </div>
 
-    <slot name="bottom"/>
+    <slot name="bottom" />
   </main>
 </template>
 
@@ -41,8 +44,6 @@ import moment from 'moment'
 import { resolvePage, outboundRE, endingSlashRE } from '../util'
 
 export default {
-  props: ['sidebarItems'],
-
   computed: {
     lastUpdated() {
       return moment(this.$page.lastUpdated).format('MMM D  YYYY')
@@ -54,8 +55,6 @@ export default {
         return
       } else if (prev) {
         return resolvePage(this.$site.pages, prev, this.$route.path)
-      } else {
-        return resolvePrev(this.$page, this.sidebarItems)
       }
     },
 
@@ -65,8 +64,6 @@ export default {
         return
       } else if (next) {
         return resolvePage(this.$site.pages, next, this.$route.path)
-      } else {
-        return resolveNext(this.$page, this.sidebarItems)
       }
     },
 
@@ -152,60 +149,60 @@ function flatten(items, res) {
   }
 }
 </script>
-
 <style lang="stylus">
 @require '../styles/wrapper.styl';
 
 .page {
-  padding-bottom: 2rem;
-  display: block;
-}
+  background: $backgroundColor;
 
-.page-title {
-  text-align: center;
-}
-
-.last-updated {
-  text-align: center;
-  font-size: 0.7em;
-
-  .time {
-    font-weight: 400;
-    color: #aaa;
+  .page-title {
+    text-align: center;
+    font-size: 2rem;
+    line-height: 1.5;
   }
-}
 
-.page-edit {
-  @extend $wrapper;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  overflow: auto;
+  .last-updated {
+    text-align: center;
+    font-size: 0.7em;
 
-  .edit-link {
-    display: inline-block;
-
-    a {
-      color: lighten($textColor, 25%);
-      margin-right: 0.25rem;
+    .time {
+      font-weight: 400;
+      color: $tagColor;
     }
   }
-}
 
-.page-nav {
-  @extend $wrapper;
-  padding-top: 1rem;
-  padding-bottom: 0;
-
-  .inner {
-    min-height: 2rem;
-    margin-top: 0;
-    border-top: 1px solid $borderColor;
+  .page-edit {
+    @extend $wrapper;
     padding-top: 1rem;
-    overflow: auto; // clear float
+    padding-bottom: 1rem;
+    overflow: auto;
+
+    .edit-link {
+      display: inline-block;
+
+      a {
+        color: lighten($textColor, 25%);
+        margin-right: 0.25rem;
+      }
+    }
   }
 
-  .next {
-    float: right;
+  .page-nav {
+    @extend $wrapper;
+    padding-top: 1rem;
+    padding-bottom: 0;
+
+    .inner {
+      min-height: 2rem;
+      margin-top: 0;
+      border-top: 1px solid $borderColor;
+      padding-top: 1rem;
+      overflow: auto; // clear float
+    }
+
+    .next {
+      float: right;
+    }
   }
 }
 
