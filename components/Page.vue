@@ -7,7 +7,7 @@
     </div>
 
     <div class="last-updated" v-if="lastUpdated">
-      <span class="time">{{ lastUpdated }}</span>
+      <span>{{ lastUpdated }}</span>
     </div>
 
     <Content />
@@ -23,9 +23,9 @@
       <p class="inner">
         <span v-if="prev" class="prev">
           ←
-          <router-link v-if="prev" class="prev" :to="prev.path">{{
-            prev.title || prev.path
-          }}</router-link>
+          <router-link v-if="prev" class="prev" :to="prev.path">
+            {{ prev.title || prev.path }}
+          </router-link>
         </span>
 
         <span v-if="next" class="next">
@@ -51,20 +51,18 @@ export default {
 
     prev() {
       const prev = this.$page.frontmatter.prev
-      if (prev === false) {
-        return
-      } else if (prev) {
+      if (prev) {
         return resolvePage(this.$site.pages, prev, this.$route.path)
       }
+      return null
     },
 
     next() {
       const next = this.$page.frontmatter.next
-      if (next === false) {
-        return
-      } else if (next) {
+      if (next) {
         return resolvePage(this.$site.pages, next, this.$route.path)
       }
+      return null
     },
 
     editLink() {
@@ -82,6 +80,7 @@ export default {
       if (docsRepo && editLinks && this.$page.relativePath) {
         return this.createEditLink(repo, docsRepo, docsDir, docsBranch, this.$page.relativePath)
       }
+      return null
     },
 
     editLinkText() {
@@ -150,72 +149,44 @@ function flatten(items, res) {
 }
 </script>
 <style lang="stylus">
-@require '../styles/wrapper.styl';
-
-.page {
-  background: $backgroundColor;
-
-  .page-title {
-    text-align: center;
-    font-size: 2rem;
-    line-height: 1.5;
-  }
-
-  .last-updated {
-    text-align: center;
-    font-size: 0.7em;
-
-    .time {
-      font-weight: 400;
-      color: $tagColor;
-    }
-  }
-
-  .page-edit {
-    @extend $wrapper;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    overflow: auto;
-
-    .edit-link {
-      display: inline-block;
-
-      a {
-        color: lighten($textColor, 25%);
-        margin-right: 0.25rem;
-      }
-    }
-  }
-
-  .page-nav {
-    @extend $wrapper;
-    padding-top: 1rem;
-    padding-bottom: 0;
-
-    .inner {
-      min-height: 2rem;
-      margin-top: 0;
-      border-top: 1px solid $borderColor;
-      padding-top: 1rem;
-      overflow: auto; // clear float
-    }
-
-    .next {
-      float: right;
-    }
-  }
-}
-
-@media (max-width: $MQMobile) {
-  .page-edit {
-    .edit-link {
-      margin-bottom: 0.5rem;
-    }
-
-    .last-updated {
-      font-size: 0.7em;
-      text-align: center;
-    }
-  }
-}
+@require '../styles/wrapper.styl'
+.page
+  background $backgroundColor
+  .page-title
+    text-align center
+    font-size 2rem
+    line-height 1.5
+  .last-updated
+    font-size 0.6rem
+    >span
+      color $tagColor
+  .page-edit
+    @extend $wrapper
+    padding-top 1rem
+    padding-bottom 1rem
+    overflow auto
+    .edit-link
+      display inline-block
+      a
+        color lighten($textColor, 25%)
+        margin-right 0.25rem
+  .page-nav
+    @extend $wrapper
+    padding-top 1rem
+    padding-bottom 0
+    .inner
+      min-height 2rem
+      margin-top 0
+      border-top 1px solid $borderColor
+      padding-top 1rem
+      overflow auto // clear float
+    .next
+      float right
+@media (max-width: $MQMobile)
+  .page-edit
+    .edit-link
+      margin-bottom 0.5rem
+    .last-updated
+      font-size 0.7em
+      text-align center
 </style>

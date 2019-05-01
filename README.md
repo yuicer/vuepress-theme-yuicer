@@ -43,3 +43,15 @@ themeConfig:{
   bgImg: // 推荐填写完整的外链 url
 }
 ```
+
+```yaml
+---
+title: fdsfsdf
+category: mmm
+# 列表封面
+img: https://cloudfront.otakism.com/images/2017/02/pixiv201705.jpg
+# 封面样式
+imgStyle: { height: '100px' }
+---
+
+```

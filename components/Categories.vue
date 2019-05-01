@@ -60,23 +60,15 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@require '../styles/wrapper.styl';
-
-.categories-wrapper {
-  @extend $wrapper;
-}
-
-@media (max-width: $MQMobile) {
-  .page-edit {
-    .edit-link {
-      margin-bottom: 0.5rem;
-    }
-
-    .last-updated {
-      font-size: 0.8em;
-      float: none;
-      text-align: left;
-    }
-  }
-}
+@require '../styles/wrapper.styl'
+.categories-wrapper
+  @extend $wrapper
+@media (max-width: $MQMobile)
+  .page-edit
+    .edit-link
+      margin-bottom 0.5rem
+    .last-updated
+      font-size 0.8em
+      float none
+      text-align left
 </style>

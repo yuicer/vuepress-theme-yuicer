@@ -1,15 +1,23 @@
 {
   "name": "@yuicer/vuepress-theme-yuicer",
-  "version": "0.0.51",
+  "version": "0.0.6",
   "description": "theme for vuepress",
   "main": "index.js",
+  "scripts": {
+    "lint": "lint-staged"
+  },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged"
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "lint-staged": {
+    "*.{js,vue}": [
+      "eslint --fix",
+      "pretty-quick --staged",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
@@ -23,12 +31,20 @@
   "homepage": "https://github.com/yuicer/vuepress-theme-yuicer#readme",
   "dependencies": {
     "@vuepress/plugin-blog": "^1.0.0-alpha.47",
-    "@vuepress/plugin-pagination": "^1.0.0-alpha.47",
     "@vuepress/plugin-medium-zoom": "^1.0.0-alpha.47",
+    "@vuepress/plugin-pagination": "^1.0.0-alpha.47",
     "moment": "^2.24.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^7.5.2",
+    "@commitlint/config-conventional": "^7.5.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-vue": "^5.2.2",
     "husky": "^2.1.0",
+    "lint-staged": "^8.1.5",
     "prettier": "1.17.0",
     "pretty-quick": "^1.10.0"
   }

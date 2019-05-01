@@ -25,30 +25,19 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.pagation {
-  text-align: center;
-  margin-top: 2rem;
-  justify-content: space-between;
-
-  >span {
-    background-color: $backgroundColor;
-    display: inline-block;
-    margin: 0 0.4rem;
-    padding: 0.4rem 0.8rem;
-    border-radius: $borderRadius;
-    box-shadow: $boxShadow;
-    transition: transform 0.2s;
-
-    &:hover {
-      transform: scale(1.1);
-      transform-origin: center;
-    }
-  }
-
-  .next {
-  }
-
-  .pre {
-  }
-}
+.pagation
+  text-align center
+  margin-top 2rem
+  justify-content space-between
+  >span
+    background-color $backgroundColor
+    display inline-block
+    margin 0 0.4rem
+    padding 0.4rem 0.8rem
+    border-radius $borderRadius
+    box-shadow $boxShadow
+    transition transform 0.2s
+    &:hover
+      transform scale(1.1)
+      transform-origin center
 </style>
