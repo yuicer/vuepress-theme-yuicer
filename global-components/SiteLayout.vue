@@ -6,20 +6,16 @@
 </template>
 
 <script>
+import { isExternal } from '@theme/util'
 import Navbar from '@theme/components/Navbar.vue'
-
 export default {
   components: { Navbar },
-  mounted() {
-    console.log('this', this)
-  },
   computed: {
     backgroundStyle() {
-      const { themeConfig } = this.$site
-      const { bgImg } = themeConfig
-      if (bgImg)
+      const userBgImg = this.$site.themeConfig.bgImg
+      if (userBgImg)
         return {
-          backgroundImage: `url(${bgImg})`,
+          backgroundImage: this.getImgUrl(userBgImg),
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
           backgroundAttachment: 'fixed'
@@ -49,6 +45,11 @@ export default {
         },
         userPageClass
       ]
+    }
+  },
+  methods: {
+    getImgUrl(path) {
+      return isExternal(path) ? `url(${path})` : `url(${this.$withBase(path)})`
     }
   }
 }

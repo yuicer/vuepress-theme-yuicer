@@ -80,7 +80,7 @@ strong
   font-weight 600
 
 h1, h2, h3, h4, h5, h6
-  font-weight 600
+  font-weight 400
   line-height 1.25
   .content:not(.custom) > &
     margin-top (0.5rem - $navbarHeight)
@@ -95,14 +95,14 @@ h1, h2, h3, h4, h5, h6
     opacity: 1
 
 h1
-  font-size 2.2rem
+  font-size 2rem
 
 h2
-  font-size 1.65rem
+  font-size 1.45rem
   padding-bottom .3rem
 
 h3
-  font-size 1.35rem
+  font-size 1.15rem
 
 a.header-anchor
   font-size 0.85em
@@ -140,12 +140,11 @@ th, td
   padding .6em 1em
 
 .theme-container
-  padding: 3.6rem 0;
-  min-height: 100vh;
-  box-sizing: border-box;
+  padding 3.6rem 0
+  min-height 100vh
+  box-sizing border-box
   &.no-navbar
     .content:not(.custom) > h1, h2, h3, h4, h5, h6
         margin-top 1.5rem
         padding-top 0
-
 @require 'mobile.styl'

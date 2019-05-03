@@ -1,14 +1,26 @@
 <template>
   <div class="wrapper">
-    <div v-for="item in formatData" :key="item.path" class="ariticle" @click="onClick(item)">
-      <div class="title">{{ item.title }}</div>
-      <div class="last-updated" v-if="lastUpdated">
-        <span>{{ lastUpdated }}</span>
+    <div v-for="item in formatData" :key="item.path" class="ariticle">
+      <div class="ariticle-title" @click="toDetail(item)">{{ item.title }}</div>
+      <div class="tags">
+        <div
+          v-if="item.frontmatter.category"
+          @click="toCategories(item.frontmatter.category)"
+          class="category"
+        >
+          <span>{{ item.frontmatter.category }}</span>
+        </div>
+        <div class="last-updated" v-if="item.lastUpdated">
+          <span>{{ getLastUpdated(item.lastUpdated) }}</span>
+        </div>
       </div>
       <div
         class="img"
         v-if="item.frontmatter.img"
-        :style="{ backgroundImage: `url(${item.frontmatter.img})`, ...item.frontmatter.imgStyle }"
+        :style="{
+          backgroundImage: getImgUrl(item.frontmatter.img),
+          ...item.frontmatter.imgStyle
+        }"
       ></div>
       <div class="abstract" v-html="item.excerpt" />
     </div>
@@ -17,6 +29,7 @@
 
 <script>
 import moment from 'moment'
+import { isExternal } from '@theme/util'
 export default {
   props: ['data', 'currentPage', 'pageSplitNum'],
   computed: {
@@ -25,14 +38,20 @@ export default {
         (this.currentPage - 1) * this.pageSplitNum,
         this.currentPage * this.pageSplitNum
       )
-    },
-    lastUpdated() {
-      return moment(this.$page.lastUpdated).format('MMM D  YYYY')
     }
   },
   methods: {
-    onClick({ path }) {
+    toDetail({ path }) {
       this.$router.push(path)
+    },
+    toCategories(name) {
+      this.$router.push(this.$categories.list.find(item => item.name === name).path)
+    },
+    getLastUpdated(time) {
+      return moment(time).format('MMM D  YYYY')
+    },
+    getImgUrl(path) {
+      return isExternal(path) ? `url(${path})` : `url(${this.$withBase(path)})`
     }
   }
 }
@@ -42,7 +61,6 @@ export default {
 .wrapper
   .ariticle
     text-align center
-    cursor pointer
     margin 16px auto
     padding 16px 20px 10px
     line-height 1.5
@@ -53,18 +71,30 @@ export default {
     &:hover
       transform scale(1.03)
       transform-origin center
-    .title
-      position relative
+    .ariticle-title
+      cursor pointer
       font-size 1.28rem
-    .last-updated
-      font-size 0.6rem
-      >span
-        color $tagColor
+      transition color 0.2s
+      &:hover
+        color $accentColor
+    .tags
+      display flex
+      justify-content center
+      margin-bottom 1.2rem
+      color $tagColor
+      transition color 0.2s
+      span
+        margin 0 0.4rem
+        font-size 0.6rem
+      .category
+        cursor pointer
+        &:hover
+          color $accentColor
     .img
       box-sizing border-box
-      width 110%
+      width 114%
       position relative
-      left -5%
+      left -7%
       border-radius $borderRadius
       height 20rem
       background-repeat no-repeat
@@ -74,13 +104,11 @@ export default {
       border 0.2rem solid $backgroundColor
       @media (max-width: $MQNarrow)
         height 14rem
+        border none
       @media (max-width: $MQMobileNarrow)
         height 8rem
-    .categories
-      .category
-        cursor pointer
-        &.active
-          color $accentColor
-        &:hover
-          color $accentColor
+        border none
+    .abstract
+      text-align left
+      font-size 0.9rem
 </style>

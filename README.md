@@ -2,56 +2,45 @@
 
 > theme-vue for vuepress
 
-```
+```shell
  npm i @yuicer/vuepress-theme-yuicer@latest
 ```
 
-## todo
-
-## 第一阶段
-
-### 主页
-
-1. - [x] 自动生成一个主页
-2. - [ ] 主页【封面图，~~下面 list 表~~】
-
-### 分类页
-
-1. - [x] ~~categoty 展示有多少个类别，点击进入 categories~~ 不需要 categoty 页，直接点击可进入
-2. - [x] categories 展示当前类别有多少文章 ~~【需不需要公用主页】~~，点击跳转到文章
-3. - [ ] 列表页和文章页都有 categories ~~tag~~，可以点击跳转到对应的 categories 页
-
-### extra
-
-- [ ] 动态背景，ui 优化
-
-## 第二阶段
-
-### 三方系统的接入
-
-- [ ] 评论，分析，
-
-### 工具包
-
-- [ ] 自动生成文件模版，自动传服务器，类似 hexo 一样的工具包
-
-#### option
-
+```js
+{
+  // .vuepress/config.js
+  ...,
+  theme: '@yuicer/yuicer',
+}
 ```
+
+###
+
+### option
+
+> 图片引用有两种形式，一种是使用完整外链【推荐】【请使用 https 图片】，另一种则是借助 vuepress 提供的 $withBase 。需要将资源图片放在 .vuepress/public/ 文件夹下，然后提供一个绝对路径，该主题会自动使用 $withBase 解析
+
+相关文档 [https://v1.vuepress.vuejs.org/zh/guide/assets.html#%E5%9F%BA%E7%A1%80%E8%B7%AF%E5%BE%84](https://v1.vuepress.vuejs.org/zh/guide/assets.html#%E5%9F%BA%E7%A1%80%E8%B7%AF%E5%BE%84)
+
+```js
 themeConfig:{
-  ...
-  bgImg: // 推荐填写完整的外链 url
+  ...,
+  // 页面的背景图片
+  bgImg: 'https://img.yuicer.com/bg/beach.jpg'
 }
 ```
 
 ```yaml
 ---
 title: fdsfsdf
-category: mmm
-# 列表封面
-img: https://cloudfront.otakism.com/images/2017/02/pixiv201705.jpg
+# 分类
+category: ariticle
+# 列表封面，在列表页展示，同时会自动在详情页生成一个该 <img/> 标签
+img: '/niconiconi.jpg'
 # 封面样式
-imgStyle: { height: '100px' }
+# imgStyle: { height: '100px' }
 ---
 
 ```
+
+### [todoList](./TODO.md)

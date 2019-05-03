@@ -1,6 +1,6 @@
 {
   "name": "@yuicer/vuepress-theme-yuicer",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "theme for vuepress",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,8 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-push": "npm publish"
     }
   },
   "lint-staged": {
@@ -38,6 +39,8 @@
   "devDependencies": {
     "@commitlint/cli": "^7.5.2",
     "@commitlint/config-conventional": "^7.5.0",
+    "@vuepress/plugin-back-to-top": "^1.0.0-alpha.47",
+    "@vuepress/plugin-google-analytics": "^1.0.0-alpha.47",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.2.0",
