@@ -2,30 +2,31 @@
   <main class="page">
     <slot name="top" />
 
-    <div class="page-title">
-      <span>{{ $page.title }}</span>
-    </div>
+    <div class="page-title">{{ $page.title }}</div>
 
-    <div class="last-updated" v-if="lastUpdated">
-      <span>{{ lastUpdated }}</span>
-    </div>
-
-    <Content />
-
-    <footer class="page-edit">
-      <div class="edit-link" v-if="editLink">
-        <a :href="editLink" target="_blank" rel="noopener noreferrer">{{ editLinkText }}</a>
-        <OutboundLink />
+    <div class="tags">
+      <div
+        v-if="$page.frontmatter.category"
+        @click="toCategories($page.frontmatter.category)"
+        class="category"
+      >
+        <span>{{ $page.frontmatter.category }}</span>
       </div>
-    </footer>
+      <div class="last-updated" v-if="lastUpdated">
+        <span>{{ lastUpdated }}</span>
+      </div>
+    </div>
+
+    <img class="img" v-if="$page.frontmatter.img" :src="getImgUrl($page.frontmatter.img)" />
+    <Content />
 
     <div class="page-nav" v-if="prev || next">
       <p class="inner">
         <span v-if="prev" class="prev">
           ←
-          <router-link v-if="prev" class="prev" :to="prev.path">
-            {{ prev.title || prev.path }}
-          </router-link>
+          <router-link v-if="prev" class="prev" :to="prev.path">{{
+            prev.title || prev.path
+          }}</router-link>
         </span>
 
         <span v-if="next" class="next">
@@ -41,12 +42,13 @@
 
 <script>
 import moment from 'moment'
+import { isExternal } from '@theme/util'
 import { resolvePage, outboundRE, endingSlashRE } from '../util'
 
 export default {
   computed: {
     lastUpdated() {
-      return moment(this.$page.lastUpdated).format('MMM D  YYYY')
+      return this.$page.lastUpdated ? moment(this.$page.lastUpdated).format('MMM D  YYYY') : ''
     },
 
     prev() {
@@ -63,58 +65,12 @@ export default {
         return resolvePage(this.$site.pages, next, this.$route.path)
       }
       return null
-    },
-
-    editLink() {
-      if (this.$page.frontmatter.editLink === false) {
-        return
-      }
-      const {
-        repo,
-        editLinks,
-        docsDir = '',
-        docsBranch = 'master',
-        docsRepo = repo
-      } = this.$site.themeConfig
-
-      if (docsRepo && editLinks && this.$page.relativePath) {
-        return this.createEditLink(repo, docsRepo, docsDir, docsBranch, this.$page.relativePath)
-      }
-      return null
-    },
-
-    editLinkText() {
-      return (
-        this.$themeLocaleConfig.editLinkText ||
-        this.$site.themeConfig.editLinkText ||
-        `Edit this page`
-      )
     }
   },
 
   methods: {
-    createEditLink(repo, docsRepo, docsDir, docsBranch, path) {
-      const bitbucket = /bitbucket.org/
-      if (bitbucket.test(repo)) {
-        const base = outboundRE.test(docsRepo) ? docsRepo : repo
-        return (
-          base.replace(endingSlashRE, '') +
-          `/src` +
-          `/${docsBranch}/` +
-          (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '') +
-          path +
-          `?mode=edit&spa=0&at=${docsBranch}&fileviewer=file-view-default`
-        )
-      }
-
-      const base = outboundRE.test(docsRepo) ? docsRepo : `https://github.com/${docsRepo}`
-      return (
-        base.replace(endingSlashRE, '') +
-        `/edit` +
-        `/${docsBranch}/` +
-        (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '') +
-        path
-      )
+    getImgUrl(path) {
+      return isExternal(path) ? path : this.$withBase(path)
     }
   }
 }
@@ -148,28 +104,34 @@ function flatten(items, res) {
   }
 }
 </script>
-<style lang="stylus">
+<style lang="stylus" scoped>
 @require '../styles/wrapper.styl'
 .page
+  min-height 70vh
   background $backgroundColor
   .page-title
     text-align center
-    font-size 2rem
-    line-height 1.5
-  .last-updated
-    font-size 0.6rem
-    >span
-      color $tagColor
-  .page-edit
-    @extend $wrapper
-    padding-top 1rem
-    padding-bottom 1rem
-    overflow auto
-    .edit-link
-      display inline-block
-      a
-        color lighten($textColor, 25%)
-        margin-right 0.25rem
+    font-size 1.6rem
+  .tags
+    display flex
+    justify-content center
+    margin-bottom 1.2rem
+    color $tagColor
+    transition color 0.2s
+    span
+      margin 0 0.4rem
+      font-size 0.6rem
+    .category
+      cursor pointer
+      &:hover
+        color $accentColor
+  .img
+    box-sizing border-box
+    width 100%
+    background-repeat no-repeat
+    background-size cover
+    background-position center
+    border 0.2rem solid $backgroundColor
   .page-nav
     @extend $wrapper
     padding-top 1rem
@@ -182,11 +144,4 @@ function flatten(items, res) {
       overflow auto // clear float
     .next
       float right
-@media (max-width: $MQMobile)
-  .page-edit
-    .edit-link
-      margin-bottom 0.5rem
-    .last-updated
-      font-size 0.7em
-      text-align center
 </style>

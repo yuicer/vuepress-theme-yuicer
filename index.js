@@ -19,20 +19,27 @@ module.exports = (options, ctx) => ({
 
   plugins: [
     ['@vuepress/active-header-links', options.activeHeaderLinks],
-    [
-      '@vuepress/plugin-blog',
-      {
-        // pageEnhancers: [
-        //   {
-        //     when: ({ regularPath }) => regularPath === '/',
-        //     frontmatter: { layout: 'Categories' || 'Layout' }
-        //   }
-        // ]
-      }
-    ],
+    '@vuepress/plugin-blog',
     '@vuepress/search',
     '@vuepress/plugin-nprogress',
-    '@vuepress/medium-zoom',
-    '@vuepress/pagination'
+    '@vuepress/pagination',
+    '@vuepress/back-to-top',
+    ['@vuepress/medium-zoom', { selector: '.page img' }],
+    [
+      '@vuepress/last-updated',
+      {
+        transformer: (timestamp, lang) => {
+          const moment = require('moment')
+          moment.locale(lang)
+          return moment(new Date(timestamp))
+        }
+      }
+    ],
+    [
+      '@vuepress/google-analytics',
+      {
+        ga: options.ga || ''
+      }
+    ]
   ]
 })
