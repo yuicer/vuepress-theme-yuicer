@@ -16,6 +16,7 @@
       >
     </router-link>
 
+    <span v-if="$category" class="breadcrumb">{{ title }}</span>
     <div
       class="links"
       :style="
@@ -68,6 +69,10 @@ export default {
   },
 
   computed: {
+    title() {
+      return this.$title.split('|')[0]
+    },
+
     algolia() {
       return this.$themeLocaleConfig.algolia || this.$site.themeConfig.algolia || {}
     },
@@ -100,10 +105,16 @@ $navbar-horizontal-padding = 1.5rem
     margin-right 0.8rem
     vertical-align top
   .site-name
+    color $textColor
     font-size 1.3rem
     font-weight 600
-    color $textColor
     position relative
+  .breadcrumb
+    font-size 0.9rem
+    color $textColor
+    &:before
+      content '-'
+      padding 0 0.6rem
   .links
     padding-left 1.5rem
     box-sizing border-box

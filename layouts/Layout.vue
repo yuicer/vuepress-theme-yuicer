@@ -1,6 +1,6 @@
 <template>
   <SiteLayout>
-    <Categories v-if="isBasePage" />
+    <Categories v-if="isRootPage" />
 
     <Page v-else>
       <slot name="page-top" slot="top" />
@@ -16,7 +16,7 @@ import Page from '@theme/components/Page.vue'
 export default {
   components: { Categories, Page },
   computed: {
-    isBasePage() {
+    isRootPage() {
       return this.$page.path === '/'
     }
   }

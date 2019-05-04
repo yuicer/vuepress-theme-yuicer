@@ -1,7 +1,5 @@
 <template>
   <div class="categories-wrapper">
-    <h2 v-if="notBasePage" class="title">{{ title }}</h2>
-
     <AriticleAbstractList :data="posts" :pageSplitNum="pageSplitNum" :currentPage="currentPage" />
 
     <pagination
@@ -19,9 +17,9 @@ import Pagination from '@theme/components/Pagination.vue'
 
 export default {
   props: {
-    notBasePage: {
+    isRootPage: {
       type: Boolean,
-      default: false
+      default: true
     }
   },
   components: { AriticleAbstractList, Pagination },
@@ -36,18 +34,13 @@ export default {
   computed: {
     posts() {
       let posts = []
-      if (this.notBasePage) {
-        posts = this.$category.posts
-      } else {
-        posts = this.$categories.list.reduce((result, cur) => {
-          return result.concat(cur.posts)
-        }, [])
-      }
+      if (this.isRootPage)
+        posts = this.$site.pages.filter(
+          ({ type, frontmatter: { layout } }) => !type && layout !== 'Category'
+        )
+      else posts = this.$category.posts
 
       return posts
-    },
-    title() {
-      return this.$page.frontmatter.title.split('|')[0]
     }
   },
   methods: {

@@ -1,6 +1,6 @@
 <template>
   <SiteLayout>
-    <Categories :notBasePage="true" />
+    <Categories :isRootPage="false" />
   </SiteLayout>
 </template>
 
