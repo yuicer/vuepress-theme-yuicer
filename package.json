@@ -1,6 +1,6 @@
 {
   "name": "@yuicer/vuepress-theme-yuicer",
-  "version": "0.0.9",
+  "version": "1.0.0.",
   "description": "theme for vuepress",
   "main": "index.js",
   "scripts": {
@@ -33,7 +33,6 @@
   "dependencies": {
     "@vuepress/plugin-blog": "^1.0.0-alpha.47",
     "@vuepress/plugin-medium-zoom": "^1.0.0-alpha.47",
-    "@vuepress/plugin-pagination": "^1.0.0-alpha.47",
     "@vuepress/plugin-back-to-top": "^1.0.0-alpha.47",
     "@vuepress/plugin-google-analytics": "^1.0.0-alpha.47",
     "moment": "^2.24.0"

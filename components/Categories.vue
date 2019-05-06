@@ -34,15 +34,13 @@ export default {
   computed: {
     posts() {
       let posts = []
-      if (this.isRootPage)
-        posts = this.$site.pages.filter(
-          ({ type, frontmatter: { layout } }) => !type && layout !== 'Category'
-        )
+      if (this.isRootPage) posts = this.$sortedPages
       else posts = this.$category.posts
 
       return posts
     }
   },
+
   methods: {
     setCurrentPage(page) {
       this.currentPage = page

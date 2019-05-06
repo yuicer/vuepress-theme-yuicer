@@ -3,6 +3,23 @@ const moment = require('moment')
 
 // Theme API.
 module.exports = (options, ctx) => ({
+  // 增加一个时间参数到 $page
+  extendPageData($page) {
+    const {
+      lastUpdated,
+      frontmatter: { date }
+    } = $page
+    const time = date || lastUpdated || Date.now()
+    $page.time = time
+  },
+  // 注入一个排序好的全局计算属性
+  enhanceAppFiles: path.resolve(__dirname, 'plugins/plugin-sorted-pages/enhanceAppFile.js'),
+  // 增加一个默认主页
+  additionalPages: [
+    {
+      path: '/'
+    }
+  ],
   alias() {
     const { themeConfig, siteConfig } = ctx
     // resolve algolia
@@ -17,27 +34,11 @@ module.exports = (options, ctx) => ({
         : path.resolve(__dirname, 'noopModule.js')
     }
   },
-
   plugins: [
     ['@vuepress/active-header-links', options.activeHeaderLinks],
     '@vuepress/plugin-blog',
     '@vuepress/search',
     '@vuepress/plugin-nprogress',
-    [
-      '@vuepress/pagination',
-      {
-        postsFilter: ({ type, frontmatter: { layout } }) => !type && layout !== 'Category',
-        postsSorter: (prev, next) => {
-          const prevTime = new Date(
-            prev.frontmatter.date || prev.lastUpdated || Date.now()
-          ).getTime()
-          const nextTime = new Date(
-            next.frontmatter.date || next.lastUpdated || Date.now()
-          ).getTime()
-          return prevTime - nextTime > 0 ? -1 : 1
-        }
-      }
-    ],
     '@vuepress/back-to-top',
     ['@vuepress/medium-zoom', { selector: '.page img' }],
     [

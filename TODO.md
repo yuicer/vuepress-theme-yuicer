@@ -26,3 +26,4 @@
 ### 工具包
 
 - [ ] 自动生成文件模版，自动传服务器，类似 hexo 一样的工具包
+      ps: extendCli 这个东西感觉不错，记录一下 https://v1.vuepress.vuejs.org/zh/plugin/option-api.html#extendcli
