@@ -12,26 +12,28 @@
       >
         <span>{{ $page.frontmatter.category }}</span>
       </div>
-      <div class="last-updated" v-if="lastUpdated">
-        <span>{{ lastUpdated }}</span>
+      <div class="time">
+        <span>{{ time }}</span>
       </div>
     </div>
 
     <img class="img" v-if="$page.frontmatter.img" :src="getImgUrl($page.frontmatter.img)" />
     <Content />
 
-    <div class="page-nav" v-if="prev || next">
+    <div class="page-nav" v-if="$sortedPage.prev || $sortedPage.next">
       <p class="inner">
-        <span v-if="prev" class="prev">
-          ←
-          <router-link v-if="prev" class="prev" :to="prev.path">
-            {{ prev.title || prev.path }}
+        <span v-if="$sortedPage.prev" class="prev">
+          <router-link class="prev" :to="$sortedPage.prev.path">
+            <span>←</span>
+            {{ $sortedPage.prev.title || $sortedPage.prev.path }}
           </router-link>
         </span>
 
-        <span v-if="next" class="next">
-          <router-link v-if="next" :to="next.path">{{ next.title || next.path }}</router-link
-          >→
+        <span v-if="$sortedPage.next" class="next">
+          <router-link class="next" :to="$sortedPage.next.path">
+            {{ $sortedPage.next.title || $sortedPage.next.path }}
+            <span>→</span>
+          </router-link>
         </span>
       </p>
     </div>
@@ -47,59 +49,15 @@ import { resolvePage, outboundRE, endingSlashRE } from '../util'
 
 export default {
   computed: {
-    lastUpdated() {
-      return this.$page.lastUpdated ? moment(this.$page.lastUpdated).format('MMM D  YYYY') : ''
-    },
-
-    prev() {
-      const prev = this.$page.frontmatter.prev
-      if (prev) {
-        return resolvePage(this.$site.pages, prev, this.$route.path)
-      }
-      return null
-    },
-
-    next() {
-      const next = this.$page.frontmatter.next
-      if (next) {
-        return resolvePage(this.$site.pages, next, this.$route.path)
-      }
-      return null
+    time() {
+      const { time } = this.$sortedPage
+      return moment(time).format('MMM D  YYYY')
     }
   },
 
   methods: {
     getImgUrl(path) {
       return isExternal(path) ? path : this.$withBase(path)
-    }
-  }
-}
-
-function resolvePrev(page, items) {
-  return find(page, items, -1)
-}
-
-function resolveNext(page, items) {
-  return find(page, items, 1)
-}
-
-function find(page, items, offset) {
-  const res = []
-  flatten(items, res)
-  for (let i = 0; i < res.length; i++) {
-    const cur = res[i]
-    if (cur.type === 'page' && cur.path === decodeURIComponent(page.path)) {
-      return res[i + offset]
-    }
-  }
-}
-
-function flatten(items, res) {
-  for (let i = 0, l = items.length; i < l; i++) {
-    if (items[i].type === 'group') {
-      flatten(items[i].children || [], res)
-    } else {
-      res.push(items[i])
     }
   }
 }
@@ -134,13 +92,10 @@ function flatten(items, res) {
     border 0.2rem solid $backgroundColor
   .page-nav
     @extend $wrapper
-    padding-top 1rem
+    margin-top 2rem
     padding-bottom 0
     .inner
-      min-height 2rem
-      margin-top 0
-      border-top 1px solid $borderColor
-      padding-top 1rem
+      font-size 0.8rem
       overflow auto // clear float
     .next
       float right

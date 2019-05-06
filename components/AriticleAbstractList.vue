@@ -10,8 +10,8 @@
         >
           <span>{{ item.frontmatter.category }}</span>
         </div>
-        <div class="last-updated" v-if="item.lastUpdated">
-          <span>{{ getLastUpdated(item.lastUpdated) }}</span>
+        <div class="time">
+          <span>{{ getTime(item.time) }}</span>
         </div>
       </div>
       <div
@@ -47,7 +47,7 @@ export default {
     toCategories(name) {
       this.$router.push(this.$categories.list.find(item => item.name === name).path)
     },
-    getLastUpdated(time) {
+    getTime(time) {
       return moment(time).format('MMM D  YYYY')
     },
     getImgUrl(path) {
