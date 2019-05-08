@@ -1,28 +1,33 @@
 <template>
   <div class="wrapper">
-    <div v-for="item in formatData" :key="item.path" class="ariticle">
-      <div class="ariticle-title" @click="toDetail(item)">{{ item.title }}</div>
+    <div
+      v-for="{ path, title, time, excerpt, frontmatter: { category, img, imgStyle } } in formatData"
+      :key="path"
+      class="ariticle"
+    >
+      <div class="ariticle-title">
+        <router-link :to="path">{{ title }}</router-link>
+      </div>
       <div class="tags">
-        <div
-          v-if="item.frontmatter.category"
-          @click="toCategories(item.frontmatter.category)"
-          class="category"
-        >
-          <span>{{ item.frontmatter.category }}</span>
+        <div v-if="category" class="category">
+          <router-link
+            :to="$categories && $categories.list.find(item => item.name === category).path"
+            >{{ category }}</router-link
+          >
         </div>
         <div class="time">
-          <span>{{ getTime(item.time) }}</span>
+          <span>{{ getTime(time) }}</span>
         </div>
       </div>
       <div
         class="img"
-        v-if="item.frontmatter.img"
+        v-if="img"
         :style="{
-          backgroundImage: getImgUrl(item.frontmatter.img),
-          ...item.frontmatter.imgStyle
+          backgroundImage: getImgUrl(img),
+          ...imgStyle
         }"
       ></div>
-      <div class="abstract" v-html="item.excerpt" />
+      <div class="abstract" v-html="excerpt" />
     </div>
   </div>
 </template>
@@ -41,9 +46,6 @@ export default {
     }
   },
   methods: {
-    toDetail({ path }) {
-      this.$router.push(path)
-    },
     toCategories(name) {
       this.$router.push(this.$categories.list.find(item => item.name === name).path)
     },
@@ -72,24 +74,19 @@ export default {
       transform scale(1.03)
       transform-origin center
     .ariticle-title
-      cursor pointer
       font-size 1.28rem
       transition color 0.2s
-      &:hover
-        color $accentColor
+      a
+        font-weight 400
     .tags
       display flex
       justify-content center
       margin-bottom 1.2rem
-      color $tagColor
       transition color 0.2s
-      span
+      a, span
+        color $tagColor
         margin 0 0.4rem
         font-size 0.6rem
-      .category
-        cursor pointer
-        &:hover
-          color $accentColor
     .img
       box-sizing border-box
       width 114%
@@ -111,4 +108,6 @@ export default {
     .abstract
       text-align left
       font-size 0.9rem
+      >>>img
+        max-width 100%
 </style>

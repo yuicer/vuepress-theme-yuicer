@@ -5,12 +5,14 @@
     <div class="page-title">{{ $page.title }}</div>
 
     <div class="tags">
-      <div
-        v-if="$page.frontmatter.category"
-        @click="toCategories($page.frontmatter.category)"
-        class="category"
-      >
-        <span>{{ $page.frontmatter.category }}</span>
+      <div v-if="$page.frontmatter.category">
+        <router-link
+          :to="
+            $categories &&
+              $categories.list.find(item => item.name === $page.frontmatter.category).path
+          "
+          >{{ $page.frontmatter.category }}</router-link
+        >
       </div>
       <div class="time">
         <span>{{ time }}</span>
@@ -69,20 +71,16 @@ export default {
   background $backgroundColor
   .page-title
     text-align center
-    font-size 1.6rem
+    font-size 1.28rem
   .tags
     display flex
     justify-content center
     margin-bottom 1.2rem
-    color $tagColor
     transition color 0.2s
-    span
+    a, span
+      color $tagColor
       margin 0 0.4rem
       font-size 0.6rem
-    .category
-      cursor pointer
-      &:hover
-        color $accentColor
   .img
     box-sizing border-box
     width 100%
