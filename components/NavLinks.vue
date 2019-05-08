@@ -7,10 +7,14 @@
     </div>
 
     <!-- repo link -->
-    <a v-if="repoLink" :href="repoLink" class="repo-link" target="_blank" rel="noopener noreferrer">
-      {{ repoLabel }}
-      <OutboundLink />
-    </a>
+    <a
+      v-if="repoLink"
+      :href="repoLink"
+      class="repo-link"
+      target="_blank"
+      rel="noopener noreferrer"
+      >{{ repoLabel }}</a
+    >
   </nav>
 </template>
 

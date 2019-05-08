@@ -1,5 +1,5 @@
 <template>
-  <div class="theme-container" :class="pageClasses" :style="backgroundStyle">
+  <div class="theme-container" :class="pageClasses">
     <Navbar v-if="shouldShowNavbar" />
     <slot />
   </div>
@@ -11,17 +11,6 @@ import Navbar from '@theme/components/Navbar.vue'
 export default {
   components: { Navbar },
   computed: {
-    backgroundStyle() {
-      const userBgImg = this.$site.themeConfig.bgImg
-      if (userBgImg)
-        return {
-          backgroundImage: this.getImgUrl(userBgImg),
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
-          backgroundAttachment: 'fixed'
-        }
-      return null
-    },
     shouldShowNavbar() {
       const { themeConfig } = this.$site
       const { frontmatter } = this.$page
@@ -46,6 +35,12 @@ export default {
         userPageClass
       ]
     }
+  },
+  mounted() {
+    const userBgImg = this.$site.themeConfig.bgImg
+    const domApp = document.querySelector('#app')
+    if (userBgImg && !domApp.style.backgroundImage)
+      domApp.style.backgroundImage = this.getImgUrl(userBgImg)
   },
   methods: {
     getImgUrl(path) {
