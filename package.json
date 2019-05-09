@@ -1,10 +1,12 @@
 {
-  "name": "@yuicer/vuepress-theme-yuicer",
-  "version": "1.0.2",
-  "description": "theme for vuepress",
-  "main": "index.js",
+  "name": "vuepress-theme-yuicer",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".eslintrc.js",
   "scripts": {
-    "lint": "lint-staged"
+    "lint": "lint-staged",
+    "bootstrap": "lerna bootstrap",
+    "publish": "lerna publish"
   },
   "husky": {
     "hooks": {
@@ -20,22 +22,8 @@
       "git add"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/yuicer/vuepress-theme-yuicer.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/yuicer/vuepress-theme-yuicer/issues"
-  },
-  "homepage": "https://github.com/yuicer/vuepress-theme-yuicer#readme",
   "dependencies": {
-    "@vuepress/plugin-blog": "^1.0.0-alpha.47",
-    "@vuepress/plugin-medium-zoom": "^1.0.0-alpha.47",
-    "@vuepress/plugin-back-to-top": "^1.0.0-alpha.47",
-    "@vuepress/plugin-google-analytics": "^1.0.0-alpha.47",
-    "moment": "^2.24.0"
+    "lerna": "^3.13.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.5.2",
@@ -49,5 +37,16 @@
     "lint-staged": "^8.1.5",
     "prettier": "1.17.0",
     "pretty-quick": "^1.10.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuicer/vuepress-theme-yuicer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuicer/vuepress-theme-yuicer/issues"
+  },
+  "homepage": "https://github.com/yuicer/vuepress-theme-yuicer#readme"
 }

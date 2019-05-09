@@ -54,7 +54,7 @@ title: fdsfsdf
 # 分类
 category: ariticle
 # 列表封面，在列表页展示，同时会自动在详情页生成一个该 <img/> 标签
-img: '/niconiconi.jpg'
+img: /niconiconi.jpg
 # 封面样式
 # imgStyle: { height: '100px' }
 # 推荐填写该日期

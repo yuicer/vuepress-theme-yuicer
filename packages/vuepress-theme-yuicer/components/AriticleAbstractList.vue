@@ -12,8 +12,7 @@
         <div v-if="category" class="category">
           <router-link
             :to="$categories && $categories.list.find(item => item.name === category).path"
-            >{{ category }}</router-link
-          >
+          >{{ category }}</router-link>
         </div>
         <div class="time">
           <span>{{ getTime(time) }}</span>
@@ -27,7 +26,7 @@
           ...imgStyle
         }"
       ></div>
-      <div class="abstract" v-html="excerpt" />
+      <div class="abstract" v-html="excerpt"/>
     </div>
   </div>
 </template>
@@ -74,7 +73,7 @@ export default {
       transform scale(1.03)
       transform-origin center
     .ariticle-title
-      font-size 1.28rem
+      font-size 1.32rem
       transition color 0.2s
       a
         font-weight 400

@@ -1,0 +1,27 @@
+{
+  "name": "@yuicer/vuepress-theme-yuicer",
+  "version": "1.0.2",
+  "description": "theme for vuepress",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuicer/vuepress-theme-yuicer.git"
+  },
+  "author": "yuicer",
+  "keywords": [
+    "vuepress, vueoress-theme"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuicer/vuepress-theme-yuicer/issues"
+  },
+  "homepage": "https://github.com/yuicer/vuepress-theme-yuicer#readme",
+  "dependencies": {
+    "@vuepress/plugin-back-to-top": "^1.0.0-alpha.47",
+    "@vuepress/plugin-blog": "^1.0.0-alpha.47",
+    "@vuepress/plugin-google-analytics": "^1.0.0-alpha.47",
+    "@vuepress/plugin-medium-zoom": "^1.0.0-alpha.47",
+    "@yuicer/vuepress-plugin-sorted-pages": "^1.0.2",
+    "moment": "^2.24.0"
+  }
+}

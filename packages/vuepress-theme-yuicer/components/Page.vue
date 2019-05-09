@@ -1,6 +1,6 @@
 <template>
   <main class="page">
-    <slot name="top" />
+    <slot name="top"/>
 
     <div class="page-title">{{ $page.title }}</div>
 
@@ -11,16 +11,15 @@
             $categories &&
               $categories.list.find(item => item.name === $page.frontmatter.category).path
           "
-          >{{ $page.frontmatter.category }}</router-link
-        >
+        >{{ $page.frontmatter.category }}</router-link>
       </div>
       <div class="time">
         <span>{{ time }}</span>
       </div>
     </div>
 
-    <img class="img" v-if="$page.frontmatter.img" :src="getImgUrl($page.frontmatter.img)" />
-    <Content />
+    <img class="img" v-if="$page.frontmatter.img" :src="getImgUrl($page.frontmatter.img)">
+    <Content/>
 
     <div class="page-nav" v-if="$sortedPage.prev || $sortedPage.next">
       <p class="inner">
@@ -40,7 +39,7 @@
       </p>
     </div>
 
-    <slot name="bottom" />
+    <slot name="bottom"/>
   </main>
 </template>
 
@@ -71,7 +70,7 @@ export default {
   background $backgroundColor
   .page-title
     text-align center
-    font-size 1.28rem
+    font-size 1.32rem
   .tags
     display flex
     justify-content center
