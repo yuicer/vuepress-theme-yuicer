@@ -11,6 +11,9 @@
   "keywords": [
     "vuepress, vueoress-theme"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/yuicer/vuepress-theme-yuicer/issues"
@@ -24,5 +27,5 @@
     "@yuicer/vuepress-plugin-sorted-pages": "^1.0.32",
     "moment": "^2.24.0"
   },
-  "gitHead": "f5ca3a15ad827d67f93550316a2b5d388f648168"
+  "gitHead": "775792530291fbdee1a9297e9aecf55749f97e7b"
 }
