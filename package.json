@@ -10,9 +10,9 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lerna publish & lint-staged",
+      "pre-commit": "lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-push": "npm publish"
+      "pre-push": "npm run publish"
     }
   },
   "lint-staged": {
