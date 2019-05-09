@@ -23,5 +23,6 @@
     "@vuepress/plugin-medium-zoom": "^1.0.0-alpha.47",
     "@yuicer/vuepress-plugin-sorted-pages": "^1.0.3",
     "moment": "^2.24.0"
-  }
+  },
+  "gitHead": "b209728354b9f2a0920f8704fd1a93fb775ebc61"
 }
