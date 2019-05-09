@@ -23,7 +23,7 @@
 相关文档 [https://v1.vuepress.vuejs.org/zh/guide/assets.html#%E5%9F%BA%E7%A1%80%E8%B7%AF%E5%BE%84](https://v1.vuepress.vuejs.org/zh/guide/assets.html#%E5%9F%BA%E7%A1%80%E8%B7%AF%E5%BE%84)
 
 ### 分页实现
-[vuepress-plugin-sorted-pages](.。/vuepress-plugin-sorted-pages/README.md)
+[vuepress-plugin-sorted-pages](../vuepress-plugin-sorted-pages/README.md)
 
 
 ### 配置项目
@@ -42,14 +42,15 @@ themeConfig:{
 
 ```yaml
 ---
+# 文章标题
 title: fdsfsdf
 # 分类
 category: ariticle
 # 列表封面，在列表页展示，同时会自动在详情页生成一个该 <img/> 标签
 img: /niconiconi.jpg
 # 封面样式
-# imgStyle: { height: '100px' }
-# 推荐填写该日期
+imgStyle: { height: '100px' }
+# 日期 推荐填写如下格式（会传入 new Date()）
 date: 2018-05-04 19:18:40
 ---
 
