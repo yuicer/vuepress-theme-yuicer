@@ -1,0 +1,26 @@
+{
+  "name": "@yuicer/vuepress-plugin-sorted-pages",
+  "version": "1.0.2",
+  "description": "plugin for vuepress, get pages sorted by time",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vuepress",
+    "vuepress plugin",
+    "pagination",
+    "sort page"
+  ],
+  "author": "yuicer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuicer/vuepress-theme-yuicer/issues"
+  },
+  "homepage": "https://github.com/yuicer/vuepress-theme-yuicer#readme",
+  "dependencies": {
+    "@vuepress/plugin-last-updated": "^1.0.0-alpha.47",
+    "@vuepress/shared-utils": "^1.0.0-alpha.47",
+    "moment": "^2.24.0"
+  }
+}
