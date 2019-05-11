@@ -6,7 +6,6 @@
 </template>
 
 <script>
-import { isExternal } from '@theme/util'
 import Navbar from '@theme/components/Navbar.vue'
 export default {
   components: { Navbar },
@@ -25,7 +24,6 @@ export default {
         this.$themeLocaleConfig.nav
       )
     },
-
     pageClasses() {
       const userPageClass = this.$page.frontmatter.pageClass
       return [
@@ -34,17 +32,6 @@ export default {
         },
         userPageClass
       ]
-    }
-  },
-  mounted() {
-    const userBgImg = this.$site.themeConfig.bgImg
-    const domApp = document.querySelector('#app')
-    if (userBgImg && !domApp.style.backgroundImage)
-      domApp.style.backgroundImage = this.getImgUrl(userBgImg)
-  },
-  methods: {
-    getImgUrl(path) {
-      return isExternal(path) ? `url(${path})` : `url(${this.$withBase(path)})`
     }
   }
 }

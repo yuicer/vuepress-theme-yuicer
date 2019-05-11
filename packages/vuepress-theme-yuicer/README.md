@@ -23,8 +23,8 @@
 相关文档 [https://v1.vuepress.vuejs.org/zh/guide/assets.html#%E5%9F%BA%E7%A1%80%E8%B7%AF%E5%BE%84](https://v1.vuepress.vuejs.org/zh/guide/assets.html#%E5%9F%BA%E7%A1%80%E8%B7%AF%E5%BE%84)
 
 ### 分页实现
-[vuepress-plugin-sorted-pages](../vuepress-plugin-sorted-pages/README.md)
 
+[vuepress-plugin-sorted-pages](../vuepress-plugin-sorted-pages/README.md)
 
 ### 配置项目
 
@@ -35,6 +35,10 @@ themeConfig:{
   ...,
   // 页面的背景图片
   bgImg: 'https://img.yuicer.com/bg/beach.jpg'
+  // 页面的背景颜色
+  bgColor: '#f3edeb'
+  // 谷歌分析 id
+  ga: 'xxx'
 }
 ```
 
