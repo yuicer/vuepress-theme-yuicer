@@ -1,16 +1,16 @@
 # @yuicer/vuepress-plugin-sorted-pages
 
-> vuepress-plugin 
+> vuepress-plugin
 
+ps: 由于使用了 vuepress/blog 插件请不要使用 category 文件目录
 
 ### 时间系统
-
 
 时间目前采用了 md yaml 中的 date 属性和官方插件 lastUpdated ，优先级以前者为先。推荐填写前者
 
 对于两项都没有的会默认时间为当前时间 Date.now()
 
-该时间会被配置到全局计算属性 `$page.time` 中，同时会根据它来进行时间倒序页面排序。【排序晒续期和排序方法暂不开放】
+该时间会被配置到全局计算属性 `$page.time` 中，同时会根据它来进行时间倒序页面排序。【排序筛选器和排序方法暂不开放配置】
 
 ### 排序结果
 

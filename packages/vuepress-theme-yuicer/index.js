@@ -8,6 +8,8 @@ module.exports = (options, ctx) => ({
       path: '/'
     }
   ],
+  // 根组件设置
+  clientRootMixin: path.resolve(__dirname, './model/mixin.js'),
   alias() {
     const { themeConfig, siteConfig } = ctx
     // resolve algolia
@@ -30,7 +32,6 @@ module.exports = (options, ctx) => ({
     '@vuepress/back-to-top',
     ['@vuepress/medium-zoom', { selector: '.page img' }],
     '@yuicer/sorted-pages',
-    // require(path.resolve(__dirname, './plugins/plugin-sorted-pages')),
     [
       '@vuepress/google-analytics',
       {
