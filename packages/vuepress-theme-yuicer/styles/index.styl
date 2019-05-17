@@ -4,6 +4,10 @@
 @require './wrapper'
 @require './toc'
 
+svg.icon.outbound {
+  display: none;
+}
+
 html, body
   padding 0
   margin 0
@@ -40,8 +44,6 @@ body
     background-color: $backgroundColor
 
 .content:not(.custom)
-  a:hover
-    text-decoration underline
   p.demo
     padding 1rem 1.5rem
     border 1px solid #ddd

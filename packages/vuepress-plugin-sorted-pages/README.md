@@ -12,6 +12,25 @@ ps: 由于使用了 vuepress/blog 插件请不要使用 category 文件目录
 
 该时间会被配置到全局计算属性 `$page.time` 中，同时会根据它来进行时间倒序页面排序。【排序筛选器和排序方法暂不开放配置】
 
+#### 排序方法
+
+```js
+$sortedPages() {
+  const sortedPages = this.$site.pages
+    .filter(
+      ({ type, frontmatter: { layout, notArticle = false } }) =>
+        !type && layout !== 'Category' && !notArticle
+    )
+    .sort((prev, next) => {
+      const prevTime = new Date(prev.time).getTime()
+      const nextTime = new Date(next.time).getTime()
+      return prevTime - nextTime > 0 ? -1 : 1
+    })
+
+  return sortedPages
+},
+```
+
 ### 排序结果
 
 排序结果会配置到全局计算属性 `$sortedPages` 中。

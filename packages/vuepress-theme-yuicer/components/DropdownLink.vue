@@ -89,7 +89,7 @@ export default {
         border-bottom none
         font-weight 400
         margin-bottom 0
-        padding 0 1.5rem 0 1.25rem
+        margin 0 1rem
         &:hover
           color $accentColor
         &.router-link-active

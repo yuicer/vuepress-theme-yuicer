@@ -56,6 +56,8 @@ img: /niconiconi.jpg
 imgStyle: { height: '100px' }
 # 日期 推荐填写如下格式（会传入 new Date()）
 date: 2018-05-04 19:18:40
+# 特殊页面，当有如下配置之后，这个页面不会被当作文章渲染在首页，但是依旧会被渲染成一个页面，这时需要自己配置链接进入
+notArticle: true
 ---
 
 ```
