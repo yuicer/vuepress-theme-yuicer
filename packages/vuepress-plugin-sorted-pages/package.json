@@ -1,6 +1,6 @@
 {
   "name": "@yuicer/vuepress-plugin-sorted-pages",
-  "version": "1.0.4",
+  "version": "1.0.8",
   "description": "plugin for vuepress, get pages sorted by time",
   "main": "index.js",
   "scripts": {
