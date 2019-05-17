@@ -1,6 +1,6 @@
 <template>
   <main class="page">
-    <slot name="top"/>
+    <slot name="top" />
 
     <div class="page-title">{{ $page.title }}</div>
 
@@ -11,35 +11,36 @@
             $categories &&
               $categories.list.find(item => item.name === $page.frontmatter.category).path
           "
-        >{{ $page.frontmatter.category }}</router-link>
+          >{{ $page.frontmatter.category }}</router-link
+        >
       </div>
       <div class="time">
         <span>{{ time }}</span>
       </div>
     </div>
 
-    <img class="img" v-if="$page.frontmatter.img" :src="getImgUrl($page.frontmatter.img)">
-    <Content/>
+    <img class="img" v-if="$page.frontmatter.img" :src="getImgUrl($page.frontmatter.img)" />
+    <Content />
 
-    <div class="page-nav" v-if="$sortedPage.prev || $sortedPage.next">
+    <div class="page-nav" v-if="sortedPage">
       <p class="inner">
-        <span v-if="$sortedPage.prev" class="prev">
-          <router-link class="prev" :to="$sortedPage.prev.path">
+        <span v-if="sortedPage.prev" class="prev">
+          <router-link class="prev" :to="sortedPage.prev.path">
             <span>←</span>
-            {{ $sortedPage.prev.title || $sortedPage.prev.path }}
+            {{ sortedPage.prev.title || sortedPage.prev.path }}
           </router-link>
         </span>
 
-        <span v-if="$sortedPage.next" class="next">
-          <router-link class="next" :to="$sortedPage.next.path">
-            {{ $sortedPage.next.title || $sortedPage.next.path }}
+        <span v-if="sortedPage.next" class="next">
+          <router-link class="next" :to="sortedPage.next.path">
+            {{ sortedPage.next.title || sortedPage.next.path }}
             <span>→</span>
           </router-link>
         </span>
       </p>
     </div>
 
-    <slot name="bottom"/>
+    <slot name="bottom" />
   </main>
 </template>
 
@@ -50,8 +51,11 @@ import { resolvePage, outboundRE, endingSlashRE } from '../util'
 
 export default {
   computed: {
+    sortedPage() {
+      return this.$sortedPage || null
+    },
     time() {
-      const { time } = this.$sortedPage
+      const { time } = this.$page
       return moment(time).format('MMM D  YYYY')
     }
   },

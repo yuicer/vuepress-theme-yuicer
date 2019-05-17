@@ -3,7 +3,10 @@ export default ({ Vue }, ...arr) => {
     computed: {
       $sortedPages() {
         const sortedPages = this.$site.pages
-          .filter(({ type, frontmatter: { layout } }) => !type && layout !== 'Category')
+          .filter(
+            ({ type, frontmatter: { layout, notArticle = false } }) =>
+              !type && layout !== 'Category' && !notArticle
+          )
           .sort((prev, next) => {
             const prevTime = new Date(prev.time).getTime()
             const nextTime = new Date(next.time).getTime()

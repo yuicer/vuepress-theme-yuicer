@@ -1,6 +1,6 @@
 <template>
   <div class="categories-wrapper">
-    <AriticleAbstractList :data="posts" :pageSplitNum="pageSplitNum" :currentPage="currentPage" />
+    <ArticleAbstractList :data="posts" :pageSplitNum="pageSplitNum" :currentPage="currentPage" />
 
     <pagination
       :data="posts"
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import AriticleAbstractList from '@theme/components/AriticleAbstractList.vue'
+import ArticleAbstractList from '@theme/components/ArticleAbstractList.vue'
 import Pagination from '@theme/components/Pagination.vue'
 
 export default {
@@ -22,7 +22,7 @@ export default {
       default: true
     }
   },
-  components: { AriticleAbstractList, Pagination },
+  components: { ArticleAbstractList, Pagination },
 
   data() {
     return {

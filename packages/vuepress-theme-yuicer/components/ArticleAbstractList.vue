@@ -4,15 +4,17 @@
       v-for="{ path, title, time, excerpt, frontmatter: { category, img, imgStyle } } in formatData"
       :key="path"
       class="ariticle"
+      @click="toDetail(path)"
     >
-      <div class="ariticle-title">
+      <div class="ariticle-title" @click.prevent.stop>
         <router-link :to="path">{{ title }}</router-link>
       </div>
       <div class="tags">
-        <div v-if="category" class="category">
+        <div v-if="category" class="category" @click.prevent.stop>
           <router-link
             :to="$categories && $categories.list.find(item => item.name === category).path"
-          >{{ category }}</router-link>
+            >{{ category }}</router-link
+          >
         </div>
         <div class="time">
           <span>{{ getTime(time) }}</span>
@@ -26,7 +28,7 @@
           ...imgStyle
         }"
       ></div>
-      <div class="abstract" v-html="excerpt"/>
+      <div class="abstract" v-html="excerpt" />
     </div>
   </div>
 </template>
@@ -45,8 +47,8 @@ export default {
     }
   },
   methods: {
-    toCategories(name) {
-      this.$router.push(this.$categories.list.find(item => item.name === name).path)
+    toDetail(path) {
+      this.$router.push(path)
     },
     getTime(time) {
       return moment(time).format('MMM D  YYYY')
@@ -61,6 +63,7 @@ export default {
 <style lang="stylus" scoped>
 .wrapper
   .ariticle
+    cursor pointer
     text-align center
     margin 16px auto
     padding 16px 20px 10px
