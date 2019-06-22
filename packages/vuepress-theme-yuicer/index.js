@@ -10,6 +10,7 @@ module.exports = (options, ctx) => ({
   ],
   // 根组件设置
   clientRootMixin: path.resolve(__dirname, './model/mixin.js'),
+  enhanceAppFiles: path.resolve(__dirname, './plugins/.enhanceAppFile.js'),
   alias() {
     const { themeConfig, siteConfig } = ctx
     // resolve algolia

@@ -1,9 +1,18 @@
 <template>
   <div class="wrapper">
     <div
-      v-for="{ path, title, time, excerpt, frontmatter: { category, img, imgStyle } } in formatData"
+      v-for="{
+        path,
+        title,
+        time,
+        excerpt,
+        frontmatter: { category, img, imgStyle, isFullRow }
+      } in formatData"
       :key="path"
       class="ariticle"
+      :style="{
+        columnSpan: isFullRow ? 'all' : ''
+      }"
       @click="toDetail(path)"
     >
       <div class="ariticle-title" @click.prevent.stop>
@@ -62,7 +71,16 @@ export default {
 
 <style lang="stylus" scoped>
 .wrapper
+  @media (min-width: $MacPro)
+    columns 3 auto
+    column-gap 32px
+  @media (max-width: $MacPro)
+    column-gap 32px
+    columns 2 auto
+  @media (max-width: $MQMobile)
+    columns 1 auto
   .ariticle
+    break-inside avoid
     cursor pointer
     text-align center
     margin 16px auto
@@ -70,7 +88,7 @@ export default {
     line-height 1.5
     border-radius $borderRadius
     box-shadow $boxShadow
-    transition transform 0.3s
+    transition transform 0.2s
     background-color $backgroundColor
     &:hover
       transform scale(1.03)
@@ -99,14 +117,10 @@ export default {
       background-repeat no-repeat
       background-size cover
       background-position center
-      background-attachment fixed
-      border 0.2rem solid $backgroundColor
       @media (max-width: $MQNarrow)
         height 14rem
-        border none
       @media (max-width: $MQMobileNarrow)
         height 8rem
-        border none
     .abstract
       text-align left
       font-size 0.9rem

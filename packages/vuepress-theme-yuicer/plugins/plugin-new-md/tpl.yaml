@@ -1,6 +1,0 @@
-# 标题
-title: {{ title }}
-# 日期
-date: {{ date }}
-# 分类
-category: 
