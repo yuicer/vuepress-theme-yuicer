@@ -1,6 +1,6 @@
 {
   "name": "@yuicer/vuepress-theme-yuicer",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "theme for vuepress",
   "main": "index.js",
   "repository": {
@@ -25,7 +25,7 @@
     "@vuepress/plugin-blog": "1.0.1",
     "@vuepress/plugin-google-analytics": "1.0.1",
     "@vuepress/plugin-medium-zoom": "1.0.1",
-    "@yuicer/vuepress-plugin-sorted-pages": "1.0.8",
+    "@yuicer/vuepress-plugin-sorted-pages": "^1.1.0",
     "moment": "^2.24.0",
     "vuetify": "^2.0.0-beta.3"
   },
