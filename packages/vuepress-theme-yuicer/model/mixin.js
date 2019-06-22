@@ -1,4 +1,5 @@
 import { isExternal } from '@theme/util'
+const brightness = 'linear-gradient(#ccc 0%,#ccc 100%)'
 export default {
   mounted() {
     const { bgImg, bgColor } = this.$site.themeConfig
@@ -9,7 +10,9 @@ export default {
   },
   methods: {
     getImgUrl(path) {
-      return isExternal(path) ? `url(${path})` : `url(${this.$withBase(path)})`
+      return isExternal(path)
+        ? `url(${path}),${brightness}`
+        : `url(${this.$withBase(path)}),${brightness}`
     }
   }
 }
