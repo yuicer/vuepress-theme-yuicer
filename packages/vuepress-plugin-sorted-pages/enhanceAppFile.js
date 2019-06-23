@@ -2,9 +2,10 @@ export default ({ Vue }, ...arr) => {
   Vue.mixin({
     computed: {
       $sortedPage() {
+        let sortedPages = []
         try {
-          const sortedPages = this.$site.pages
-            .filter(frontmatter => frontmatter.date)
+          sortedPages = this.$site.pages
+            .filter(({ frontmatter }) => frontmatter.date)
             .sort((prev, next) => {
               const prevTime = new Date(prev.frontmatter.date).getTime()
               const nextTime = new Date(next.frontmatter.date).getTime()
@@ -12,9 +13,7 @@ export default ({ Vue }, ...arr) => {
             })
         } catch (err) {
           console.error('the date of frontmatter is required')
-          return
         }
-
         const currentPageIndex = sortedPages.findIndex(
           item => item.regularPath === this.$page.regularPath
         )
