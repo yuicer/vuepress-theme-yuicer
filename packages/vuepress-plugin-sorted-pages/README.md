@@ -10,7 +10,7 @@
 
 ```js
 const sortedPages = this.$site.pages
-  .filter(frontmatter => frontmatter.date)
+  .filter(({ frontmatter }) => frontmatter.date)
   .sort((prev, next) => {
     const prevTime = new Date(prev.frontmatter.date).getTime()
     const nextTime = new Date(next.frontmatter.date).getTime()
