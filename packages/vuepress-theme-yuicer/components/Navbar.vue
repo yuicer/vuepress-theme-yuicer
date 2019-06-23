@@ -16,7 +16,6 @@
       >
     </router-link>
 
-    <span v-if="$category" class="breadcrumb">{{ title }}</span>
     <div
       class="links"
       :style="

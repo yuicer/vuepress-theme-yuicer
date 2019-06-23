@@ -1,23 +1,23 @@
 export default ({ Vue }, ...arr) => {
   Vue.mixin({
     computed: {
-      $sortedPages() {
-        const sortedPages = this.$site.pages
-          .filter(
-            ({ type, frontmatter: { layout, notArticle = false } }) =>
-              !type && layout !== 'Category' && !notArticle
-          )
-          .sort((prev, next) => {
-            const prevTime = new Date(prev.time).getTime()
-            const nextTime = new Date(next.time).getTime()
-            return prevTime - nextTime > 0 ? -1 : 1
-          })
-
-        return sortedPages
-      },
       $sortedPage() {
-        const sortedPages = this.$sortedPages
-        const currentPageIndex = sortedPages.findIndex(item => item.path === this.$page.path)
+        try {
+          const sortedPages = this.$site.pages
+            .filter(frontmatter => frontmatter.date)
+            .sort((prev, next) => {
+              const prevTime = new Date(prev.frontmatter.date).getTime()
+              const nextTime = new Date(next.frontmatter.date).getTime()
+              return prevTime - nextTime > 0 ? -1 : 1
+            })
+        } catch (err) {
+          console.error('the date of frontmatter is required')
+          return
+        }
+
+        const currentPageIndex = sortedPages.findIndex(
+          item => item.regularPath === this.$page.regularPath
+        )
         if (currentPageIndex >= 0) {
           const prev = currentPageIndex === 0 ? null : sortedPages[currentPageIndex - 1]
           const next =
@@ -29,7 +29,7 @@ export default ({ Vue }, ...arr) => {
             next
           }
         }
-        return { info: 'this page is not sorted' }
+        return { info: 'this page has no context pages' }
       }
     }
   })
