@@ -1,24 +1,15 @@
 <template>
   <SiteLayout>
-    <Categories v-if="isRootPage" />
-
-    <Page v-else>
-      <slot name="page-top" slot="top" />
-      <slot name="page-bottom" slot="bottom" />
-    </Page>
+    <ArticleAbstractList />
+    <pagination />
   </SiteLayout>
 </template>
 
 <script>
-import Categories from '@theme/components/Categories.vue'
-import Page from '@theme/components/Page.vue'
+import ArticleAbstractList from '@theme/components/ArticleAbstractList.vue'
+import Pagination from '@theme/components/Pagination.vue'
 
 export default {
-  components: { Categories, Page },
-  computed: {
-    isRootPage() {
-      return this.$page.path === '/'
-    }
-  }
+  components: { ArticleAbstractList, Pagination }
 }
 </script>

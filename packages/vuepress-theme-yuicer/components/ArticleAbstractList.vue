@@ -1,13 +1,18 @@
 <template>
-  <div class="wrapper">
+  <div
+    class="wrapper"
+    :style="{
+      columns: pages.length > 2 ? '' : '1 auto'
+    }"
+  >
     <div
       v-for="{
         path,
         title,
         time,
         excerpt,
-        frontmatter: { category, img, imgStyle, isFullRow }
-      } in formatData"
+        frontmatter: { tag, img, imgStyle, isFullRow }
+      } in pages"
       :key="path"
       class="ariticle"
       :style="{
@@ -19,10 +24,12 @@
         <router-link :to="path">{{ title }}</router-link>
       </div>
       <div class="tags">
-        <div v-if="category" class="category" @click.prevent.stop>
+        <div v-if="tag" class="tag" @click.prevent.stop>
           <router-link
-            :to="$categories && $categories.list.find(item => item.name === category).path"
-            >{{ category }}</router-link
+            v-for="x in [].concat(tag)"
+            :key="x"
+            :to="$tag && $tag.list.find(y => y.name === x).path"
+            >{{ x }}</router-link
           >
         </div>
         <div class="time">
@@ -46,13 +53,10 @@
 import moment from 'moment'
 import { isExternal } from '@theme/util'
 export default {
-  props: ['data', 'currentPage', 'pageSplitNum'],
   computed: {
-    formatData() {
-      return this.data.slice(
-        (this.currentPage - 1) * this.pageSplitNum,
-        this.currentPage * this.pageSplitNum
-      )
+    pages() {
+      return this.$pagination.pages
+      // return this.$currentTag ? this.$currentTag.pages : this.$pagination.pages
     }
   },
   methods: {
@@ -91,7 +95,7 @@ export default {
     transition transform 0.2s
     background-color $backgroundColor
     &:hover
-      transform scale(1.03)
+      transform scaleX(1.03)
       transform-origin center
     .ariticle-title
       font-size 1.32rem

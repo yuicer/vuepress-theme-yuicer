@@ -1,28 +1,13 @@
 <template>
-  <div class="pagation" v-if="paginationLength > 1">
-    <span class="pre" v-show="currentPage !== 1" @click="goPrev">Pre</span>
-    <span class="next" v-show="currentPage < paginationLength" @click="goNext">Next</span>
+  <div class="pagation" v-if="$pagination">
+    <router-link class="pre" v-show="$pagination.hasPrev" :to="$pagination.prevLink || ''"
+      >Prev</router-link
+    >
+    <router-link class="next" v-show="$pagination.hasNext" :to="$pagination.nextLink || ''"
+      >Next</router-link
+    >
   </div>
 </template>
-
-<script>
-export default {
-  props: ['data', 'currentPage', 'pageSplitNum'],
-  computed: {
-    paginationLength() {
-      return Math.ceil(this.data.length / this.pageSplitNum)
-    }
-  },
-  methods: {
-    goPrev() {
-      this.$emit('setCurrentPage', this.currentPage - 1)
-    },
-    goNext() {
-      this.$emit('setCurrentPage', this.currentPage + 1)
-    }
-  }
-}
-</script>
 
 <style lang="stylus" scoped>
 .pagation
@@ -30,7 +15,7 @@ export default {
   text-align center
   margin-top 2rem
   justify-content space-between
-  >span
+  >a
     background-color $backgroundColor
     display inline-block
     margin 0 0.4rem

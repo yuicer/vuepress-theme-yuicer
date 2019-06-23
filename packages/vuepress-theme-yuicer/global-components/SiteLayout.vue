@@ -1,7 +1,9 @@
 <template>
   <div class="theme-container" :class="pageClasses">
     <Navbar v-if="shouldShowNavbar" />
-    <slot />
+    <div class="wrapper">
+      <slot />
+    </div>
   </div>
 </template>
 
@@ -37,3 +39,8 @@ export default {
 }
 </script>
 <style src="prismjs/themes/prism-tomorrow.css"></style>
+<style lang="stylus" scoped>
+@require '../styles/wrapper.styl'
+.wrapper
+  @extend $wrapper
+</style>

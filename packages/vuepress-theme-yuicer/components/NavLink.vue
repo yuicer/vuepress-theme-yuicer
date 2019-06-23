@@ -1,7 +1,7 @@
 <template>
-  <router-link class="nav-link" :to="link" v-if="!isExternal(link)" :exact="exact">
-    {{ item.text }}
-  </router-link>
+  <router-link class="nav-link" :to="link" v-if="!isExternal(link)" :exact="exact">{{
+    item.text
+  }}</router-link>
   <a
     v-else
     :href="link"

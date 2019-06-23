@@ -2,15 +2,8 @@ const path = require('path')
 
 // Theme API.
 module.exports = (options, ctx) => ({
-  // 增加一个默认主页
-  additionalPages: [
-    {
-      path: '/'
-    }
-  ],
   // 根组件设置
   clientRootMixin: path.resolve(__dirname, './model/mixin.js'),
-  enhanceAppFiles: path.resolve(__dirname, './plugins/.enhanceAppFile.js'),
   alias() {
     const { themeConfig, siteConfig } = ctx
     // resolve algolia
@@ -27,7 +20,26 @@ module.exports = (options, ctx) => ({
   },
   plugins: [
     ['@vuepress/active-header-links', options.activeHeaderLinks],
-    '@vuepress/plugin-blog',
+    [
+      '@vuepress/blog',
+      {
+        directories: [
+          {
+            id: 'post',
+            dirname: '_post',
+            path: '/'
+          }
+        ],
+        frontmatters: [
+          {
+            id: 'tag',
+            keys: ['tag'],
+            path: '/tag/',
+            layout: 'Tag'
+          }
+        ]
+      }
+    ],
     '@vuepress/search',
     '@vuepress/plugin-nprogress',
     '@vuepress/back-to-top',
