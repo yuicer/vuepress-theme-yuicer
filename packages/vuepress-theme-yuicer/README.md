@@ -30,7 +30,7 @@ docs
 
 **_由于使用了 plugin-blog 插件，文章请放在 \_post 目录下_**
 
-**_\_draft 目录下不会在博客系统中有入口，单依然会被编译，有 url_**
+**_\_draft 目录下不会在博客系统中有入口，但依然会被编译，有可以访问到的 url_**
 
 ### 图片系统
 
@@ -41,6 +41,8 @@ docs
 ### 文章上下文
 
 [vuepress-plugin-sorted-pages](../vuepress-plugin-sorted-pages/README.md)
+
+该插件会自动将当前文章的上一篇和下一篇文章取到后放在 $sortedPage 中
 
 ### 配置项目
 
