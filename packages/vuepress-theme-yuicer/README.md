@@ -30,7 +30,7 @@ docs
 
 **_由于使用了 plugin-blog 插件，文章请放在 \_post 目录下_**
 
-**_\_draft 目录下不会在博客系统中有入口，但依然会被编译，有可以访问到的 url_**
+**_\_draft 目录下不会在博客系统中有入口，但依然会被编译，有可以访问到的链接 url_**
 
 ### 图片系统
 
@@ -42,7 +42,7 @@ docs
 
 [vuepress-plugin-sorted-pages](../vuepress-plugin-sorted-pages/README.md)
 
-该插件会自动将当前文章的上一篇和下一篇文章取到后放在 $sortedPage 中
+该插件会自动将当前文章的上一篇和下一篇文章取到后放在全局计算属性 $sortedPage 中
 
 ### 配置项目
 
@@ -81,7 +81,7 @@ img: /niconiconi.jpg
 # 封面样式
 imgStyle: { height: '100px' }
 # 封面列表默认采用列式布局，isFullRow 为 true 时该封面卡片会占满一整行
-isFullRow: truw
+isFullRow: true
 ---
 
 ```
