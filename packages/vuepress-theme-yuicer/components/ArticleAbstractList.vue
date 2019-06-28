@@ -2,7 +2,7 @@
   <div
     class="wrapper"
     :style="{
-      columns: pages.length > 2 ? '' : '1 auto'
+      columns: pages.length > 3 ? '' : '1 auto'
     }"
   >
     <div
