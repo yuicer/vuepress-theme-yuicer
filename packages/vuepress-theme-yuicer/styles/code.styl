@@ -1,4 +1,4 @@
-.content
+{$contentClass}
   code
     color lighten($textColor, 20%)
     padding 0.25rem 0.5rem
@@ -12,10 +12,10 @@
       &.inserted
         color $accentColor
 
-.content
+{$contentClass}
   pre, pre[class*="language-"]
     line-height 1.4
-    padding 1.25rem 1.5rem
+    padding 1rem
     margin 0.85rem 0
     background-color $codeBgColor
     border-radius 6px
@@ -76,7 +76,7 @@ div[class*="language-"]
       width $lineNumbersWrapperWidth
       text-align center
       color rgba(255, 255, 255, 0.3)
-      padding 1.25rem 0
+      padding 1rem 0
       line-height 1.4
       br
         user-select none
