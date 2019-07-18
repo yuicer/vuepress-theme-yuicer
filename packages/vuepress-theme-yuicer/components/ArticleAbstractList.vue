@@ -116,9 +116,9 @@ export default {
         font-size 0.6rem
     .img
       box-sizing border-box
-      width 114%
+      width calc(100% + 40px)
       position relative
-      left -7%
+      left -20px
       border-radius $borderRadius
       height 20rem
       background-repeat no-repeat
