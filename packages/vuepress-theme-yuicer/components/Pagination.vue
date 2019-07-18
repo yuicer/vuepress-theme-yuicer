@@ -11,7 +11,6 @@
 
 <style lang="stylus" scoped>
 .pagation
-  font-size 0.1rem
   text-align center
   margin-top 2rem
   justify-content space-between
