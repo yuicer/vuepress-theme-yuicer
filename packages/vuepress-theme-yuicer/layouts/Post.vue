@@ -20,7 +20,7 @@
       </div>
 
       <img class="img" v-if="$page.frontmatter.img" :src="getImgUrl($page.frontmatter.img)" />
-      <Content />
+      <Content class="theme-yuicer-content" />
 
       <div class="page-nav" v-if="sortedPage">
         <p class="inner">
@@ -71,6 +71,7 @@ export default {
 .page
   min-height 70vh
   background $backgroundColor
+  position relative
   .page-title
     text-align center
     font-size 1.32rem
@@ -91,8 +92,9 @@ export default {
     background-position center
     border 0.2rem solid $backgroundColor
   .page-nav
-    margin-top 2rem
-    padding-bottom 0
+    position absolute
+    bottom 0
+    width calc(100% - 4.4rem)
     .inner
       font-size 0.8rem
       overflow auto // clear float
