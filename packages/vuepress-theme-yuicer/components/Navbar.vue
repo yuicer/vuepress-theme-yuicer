@@ -1,5 +1,5 @@
 <template>
-  <header class="navbar">
+  <header class="navbar" :class="{ 'navbar-hidden': !isShow }">
     <router-link :to="$localePath" class="home-link">
       <img
         class="logo"
@@ -45,7 +45,8 @@ export default {
 
   data() {
     return {
-      linksWrapMaxWidth: null
+      linksWrapMaxWidth: null,
+      isShow: true
     }
   },
 
@@ -65,6 +66,8 @@ export default {
     }
     handleLinksWrapWidth()
     window.addEventListener('resize', handleLinksWrapWidth, false)
+
+    this.listenScroll()
   },
 
   computed: {
@@ -78,6 +81,18 @@ export default {
 
     isAlgoliaSearch() {
       return this.algolia && this.algolia.apiKey && this.algolia.indexName
+    }
+  },
+  methods: {
+    listenScroll() {
+      let last_known_scroll_position = 0
+
+      window.addEventListener('scroll', e => {
+        if (last_known_scroll_position < window.scrollY && this.isShow === true) this.isShow = false
+        else if (last_known_scroll_position > window.scrollY && this.isShow === false)
+          this.isShow = true
+        last_known_scroll_position = window.scrollY
+      })
     }
   }
 }
@@ -93,10 +108,23 @@ function css(el, property) {
 <style lang="stylus">
 $navbar-vertical-padding = 0.7rem
 $navbar-horizontal-padding = 1.5rem
+.navbar-hidden
+  transform translateY(-100%)
 .navbar
   padding $navbar-vertical-padding $navbar-horizontal-padding
   line-height $navbarHeight - 1.4rem
   background $navbarColor
+  position: fixed
+  z-index: 20
+  top: 0
+  left: 0
+  right: 0
+  height: $navbarHeight
+  box-shadow: $boxShadow
+  box-sizing: border-box
+  transition transform 0.3s ease
+  @media (max-width: $MQMobileNarrow)
+    background-color: $backgroundColor
   a, span, img
     display inline-block
   .logo

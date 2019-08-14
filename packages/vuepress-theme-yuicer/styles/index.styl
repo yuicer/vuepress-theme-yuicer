@@ -13,8 +13,6 @@ html, body
   padding 0
   margin 0
   background-color $backgroundColor
-  width 100%
-  height 100%
 
 body
   font-family Roboto, Helvetica, Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
@@ -33,18 +31,6 @@ body
 .page
   @extend $wrapper
   font-size 0.82rem
-
-.navbar
-  position fixed
-  z-index 20
-  top 0
-  left 0
-  right 0
-  height $navbarHeight
-  box-shadow $boxShadow
-  box-sizing border-box
-  @media (max-width: $MQMobileNarrow)
-    background-color: $backgroundColor
 
 {$contentClass}
   a
