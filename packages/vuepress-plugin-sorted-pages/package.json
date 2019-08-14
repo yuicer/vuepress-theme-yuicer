@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/yuicer/vuepress-theme-yuicer#readme",
   "dependencies": {
-    "@vuepress/shared-utils": "1.0.1"
+    "@vuepress/shared-utils": "1.0.3"
   },
   "gitHead": "775792530291fbdee1a9297e9aecf55749f97e7b"
 }
