@@ -68,6 +68,8 @@ export default {
 </script>
 <style lang="stylus" scoped>
 .page
+  word-break break-all
+  overflow hidden
   min-height 70vh
   background $backgroundColor
   position relative
