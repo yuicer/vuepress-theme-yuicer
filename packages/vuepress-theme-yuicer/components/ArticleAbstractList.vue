@@ -55,7 +55,6 @@ import { isExternal } from '@theme/util'
 export default {
   computed: {
     pages() {
-      console.log('this', this)
       return this.$pagination.pages
     }
   },
