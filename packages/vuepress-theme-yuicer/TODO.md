@@ -25,9 +25,11 @@
 
 ### 工具包
 
-- [ ] 自动生成文件模版，自动传服务器，类似 hexo 一样的工具包
+- [ ] ~~自动生成文件模版~~，自动传服务器，类似 hexo 一样的工具包
 - [ ] 一个随机背景图的 api
 
   ps: extendCli 这个东西感觉不错，记录一下 https://v1.vuepress.vuejs.org/zh/plugin/option-api.html#extendcli
 
   ps: 这个 extendCli 好像不太好用，还是得集成一个全局 cli 命令
+
+  ps: 还是懒得集成了。。。就用 extendCli 把
