@@ -59,7 +59,6 @@ export default {
       return moment(time).format('MMM D  YYYY')
     }
   },
-
   methods: {
     getImgUrl(path) {
       return isExternal(path) ? path : this.$withBase(path)

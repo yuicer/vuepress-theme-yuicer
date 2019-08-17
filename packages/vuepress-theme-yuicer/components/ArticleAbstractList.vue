@@ -54,12 +54,9 @@ import moment from 'moment'
 import { isExternal } from '@theme/util'
 export default {
   computed: {
-    isTagPage() {
-      return this.$currentTag
-    },
     pages() {
-      // return this.$pagination.pages
-      return this.$currentTag ? this.$currentTag.pages : this.$pagination.pages
+      console.log('this', this)
+      return this.$pagination.pages
     }
   },
   methods: {

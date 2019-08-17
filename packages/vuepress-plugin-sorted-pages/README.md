@@ -10,6 +10,7 @@
 
 ```js
 const sortedPages = this.$site.pages
+  .filter(({ regularPath }) => !regularPath.startsWith('/_draft/'))
   .filter(({ frontmatter }) => frontmatter.date)
   .sort((prev, next) => {
     const prevTime = new Date(prev.frontmatter.date).getTime()

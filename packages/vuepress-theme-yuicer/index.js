@@ -3,6 +3,18 @@ const path = require('path')
 // Theme API.
 module.exports = (options, ctx) => ({
   // 根组件设置
+  extendCli(cli) {
+    cli
+      .command(
+        'new [targetDir] [title]',
+        'create a new md file, [targetDir] is just like `vuepress dev [docs]` '
+      )
+      .option('--tpl <template>', 'use given string to fill out the md yaml ')
+      .action((targetDir, title, options) => {
+        const { tpl } = options
+        require('./lib/new')({ targetDir, title, tpl })
+      })
+  },
   clientRootMixin: path.resolve(__dirname, './model/mixin.js'),
   alias() {
     const { themeConfig, siteConfig } = ctx
