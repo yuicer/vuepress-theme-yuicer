@@ -20,17 +20,18 @@
       }"
       @click="toDetail(path)"
     >
-      <div class="ariticle-title" @click.prevent.stop>
-        <router-link :to="path">{{ title }}</router-link>
+      <div class="ariticle-title">
+        <a>{{ title }}</a>
       </div>
       <div class="tags">
-        <div v-if="tag" class="tag" @click.prevent.stop>
+        <div v-if="tag" class="tag">
           <router-link
             v-for="x in [].concat(tag)"
             :key="x"
             :to="$tag && $tag.list.find(y => y.name === x).path"
-            >{{ x }}</router-link
           >
+            <span @click.stop>{{ x }}</span>
+          </router-link>
         </div>
         <div class="time">
           <span>{{ getTime(time) }}</span>
