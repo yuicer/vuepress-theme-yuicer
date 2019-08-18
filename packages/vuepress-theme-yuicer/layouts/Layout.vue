@@ -1,7 +1,7 @@
 <template>
-  <SiteLayout>
+  <SiteLayout v-if="hasPagination">
     <ArticleAbstractList />
-    <pagination v-if="!isTagPage" />
+    <pagination />
   </SiteLayout>
 </template>
 
@@ -12,8 +12,8 @@ import Pagination from '@theme/components/Pagination.vue'
 export default {
   components: { ArticleAbstractList, Pagination },
   computed: {
-    isTagPage() {
-      return this.$currentTag
+    hasPagination() {
+      return this.$pagination
     }
   }
 }
