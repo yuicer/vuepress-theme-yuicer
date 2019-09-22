@@ -1,8 +1,12 @@
 # @yuicer/vuepress-theme-yuicer
 
+  **[示例项目](https://github.com/yuicer/blog)**
+
 > theme-vue for vuepress
 
 > 由于之前一直在用 hexo ，所以有些功能会和 hexo 比较类似，比如页面的样式，文件目录结构的约定【 _post , _draft 】，脚手架命令【 hexo new xxx】 => 【vuepress new xxx】
+
+### 安装使用
 
 ```shell
  npm i @yuicer/vuepress-theme-yuicer@latest
@@ -16,8 +20,6 @@
 }
 ```
 
-**[示例项目](https://github.com/yuicer/blog)**
-
 ### 目录结构
 
 ```
@@ -30,9 +32,9 @@ docs
   | |- draft.md
 ```
 
-**_由于使用了 plugin-blog 插件，文章请放在 \_post 目录下_**
+由于使用了 plugin-blog 插件，文章请放在 \_post 目录下
 
-**_\_draft 用于存放暂不想发布的文稿，⚠️ 这些文稿不会在博客系统中有入口，但依然会被编译，有可以访问到的链接 url_**
+\_draft 用于存放暂不想发布的文稿，⚠️ 这些文稿不会在博客系统中有入口，但依然会被编译，有可以访问到的链接 url
 
 ### 命令行功能
 
@@ -99,5 +101,3 @@ isFullRow: true
 ---
 
 ```
-
-### [todoList](./TODO.md)
