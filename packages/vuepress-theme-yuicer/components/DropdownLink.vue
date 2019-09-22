@@ -1,9 +1,9 @@
 <template>
   <div class="dropdown-wrapper" :class="{ open }">
-    <a class="dropdown-title" @click="toggle">
+    <button class="dropdown-title" type="button" :aria-label="dropdownAriaLabel" @click="toggle">
       <span class="title">{{ item.text }}</span>
       <span class="arrow" :class="open ? 'down' : 'right'"></span>
-    </a>
+    </button>
 
     <DropdownTransition>
       <ul class="nav-dropdown" v-show="open">
@@ -20,11 +20,22 @@
               :key="childSubItem.link"
               v-for="childSubItem in subItem.items"
             >
-              <NavLink :item="childSubItem" />
+              <NavLink
+                @focusout="
+                  isLastItemOfArray(childSubItem, subItem.items) &&
+                    isLastItemOfArray(subItem, item.items) &&
+                    toggle()
+                "
+                :item="childSubItem"
+              />
             </li>
           </ul>
 
-          <NavLink v-else :item="subItem" />
+          <NavLink
+            v-else
+            @focusout="isLastItemOfArray(subItem, item.items) && toggle()"
+            :item="subItem"
+          />
         </li>
       </ul>
     </DropdownTransition>
@@ -34,6 +45,7 @@
 <script>
 import NavLink from '@theme/components/NavLink.vue'
 import DropdownTransition from '@theme/components/DropdownTransition.vue'
+import last from 'lodash/last'
 
 export default {
   components: { NavLink, DropdownTransition },
@@ -50,9 +62,25 @@ export default {
     }
   },
 
+  computed: {
+    dropdownAriaLabel() {
+      return this.item.ariaLabel || this.item.text
+    }
+  },
+
   methods: {
     toggle() {
       this.open = !this.open
+    },
+
+    isLastItemOfArray(item, array) {
+      return last(array) === item
+    }
+  },
+
+  watch: {
+    $route() {
+      this.open = false
     }
   }
 }
@@ -63,6 +91,11 @@ export default {
   cursor pointer
   .dropdown-title
     display block
+    font-size 0.9rem
+    background transparent
+    border none
+    font-weight 500
+    color $textColor
     &:hover
       border-color transparent
     .arrow
@@ -73,7 +106,6 @@ export default {
     .dropdown-item
       color inherit
       line-height 1.7rem
-      padding 0 1rem
       h4
         margin 0.45rem 0 0
         border-top 1px solid #eee
@@ -90,12 +122,13 @@ export default {
         border-bottom none
         font-weight 400
         margin-bottom 0
+        padding 0 1.5rem 0 1.25rem
         &:hover
           color $accentColor
         &.router-link-active
           color $accentColor
           &::after
-            content ''
+            content ""
             width 0
             height 0
             border-left 5px solid $accentColor
@@ -108,12 +141,13 @@ export default {
         margin-top 0
         padding-top 0
         border-top 0
+
 @media (max-width: $MQMobile)
   .dropdown-wrapper
     &.open .dropdown-title
       margin-bottom 0.5rem
     .nav-dropdown
-      transition height 0.1s ease-out
+      transition height .1s ease-out
       overflow hidden
       .dropdown-item
         h4
@@ -126,12 +160,16 @@ export default {
         .dropdown-subitem
           font-size 14px
           padding-left 1rem
+
 @media (min-width: $MQMobile)
   .dropdown-wrapper
     height 1.8rem
-    &:hover .nav-dropdown
+    &:hover .nav-dropdown,
+    &.open .nav-dropdown
       // override the inline style.
       display block !important
+    &.open:blur
+      display none
     .dropdown-title .arrow
       // make the arrow always down at desktop
       border-left 4px solid transparent
@@ -148,7 +186,7 @@ export default {
       position absolute
       top 100%
       right 0
-      background-color $navbarColor
+      background-color #fff
       padding 0.6rem 0
       border 1px solid #ddd
       border-bottom-color #ccc

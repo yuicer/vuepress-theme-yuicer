@@ -1,5 +1,5 @@
 <template>
-  <header class="navbar" :class="{ 'navbar-hidden': !isShow }">
+  <header class="navbar">
     <router-link :to="$localePath" class="home-link">
       <img
         class="logo"
@@ -26,27 +26,22 @@
           : {}
       "
     >
-      <AlgoliaSearchBox v-if="isAlgoliaSearch" :options="algolia" />
-      <SearchBox
-        v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false"
-      />
+      <SearchBox />
       <NavLinks class="can-hide" />
     </div>
   </header>
 </template>
 
 <script>
-import AlgoliaSearchBox from '@AlgoliaSearchBox'
-import SearchBox from '@SearchBox'
+import SearchBox from '@theme/components/SearchBox'
 import NavLinks from '@theme/components/NavLinks.vue'
 
 export default {
-  components: { NavLinks, SearchBox, AlgoliaSearchBox },
+  components: { NavLinks, SearchBox },
 
   data() {
     return {
-      linksWrapMaxWidth: null,
-      isShow: true
+      linksWrapMaxWidth: null
     }
   },
 
@@ -66,34 +61,6 @@ export default {
     }
     handleLinksWrapWidth()
     window.addEventListener('resize', handleLinksWrapWidth, false)
-
-    this.listenScroll()
-  },
-
-  computed: {
-    title() {
-      return this.$title.split('|')[0]
-    },
-
-    algolia() {
-      return this.$themeLocaleConfig.algolia || this.$site.themeConfig.algolia || {}
-    },
-
-    isAlgoliaSearch() {
-      return this.algolia && this.algolia.apiKey && this.algolia.indexName
-    }
-  },
-  methods: {
-    listenScroll() {
-      let last_known_scroll_position = 0
-
-      window.addEventListener('scroll', e => {
-        if (last_known_scroll_position < window.scrollY && this.isShow === true) this.isShow = false
-        else if (last_known_scroll_position > window.scrollY && this.isShow === false)
-          this.isShow = true
-        last_known_scroll_position = window.scrollY
-      })
-    }
   }
 }
 
@@ -108,8 +75,7 @@ function css(el, property) {
 <style lang="stylus">
 $navbar-vertical-padding = 0.7rem
 $navbar-horizontal-padding = 1.5rem
-.navbar-hidden
-  transform translateY(-100%)
+
 .navbar
   padding $navbar-vertical-padding $navbar-horizontal-padding
   line-height $navbarHeight - 1.4rem
@@ -133,16 +99,10 @@ $navbar-horizontal-padding = 1.5rem
     margin-right 0.8rem
     vertical-align top
   .site-name
-    color $textColor
     font-size 1.3rem
     font-weight 600
-    position relative
-  .breadcrumb
-    font-size 0.9rem
     color $textColor
-    &:before
-      content '-'
-      padding 0 0.6rem
+    position relative
   .links
     padding-left 1.5rem
     box-sizing border-box
@@ -153,6 +113,19 @@ $navbar-horizontal-padding = 1.5rem
     top $navbar-vertical-padding
     display flex
     .search-box
-      flex 0 0 auto
+      flex: 0 0 auto
       vertical-align top
+
+@media (max-width: $MQMobile)
+  .navbar
+    padding-left 4rem
+    .can-hide
+      display none
+    .links
+      padding-left 1.5rem
+    .site-name
+      width calc(100vw - 9.4rem)
+      overflow hidden
+      white-space nowrap
+      text-overflow ellipsis
 </style>

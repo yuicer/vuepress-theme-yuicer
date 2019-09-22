@@ -16,20 +16,6 @@ module.exports = (options, ctx) => ({
       })
   },
   clientRootMixin: path.resolve(__dirname, './model/mixin.js'),
-  alias() {
-    const { themeConfig, siteConfig } = ctx
-    // resolve algolia
-    const isAlgoliaSearch =
-      themeConfig.algolia ||
-      Object.keys((siteConfig.locales && themeConfig.locales) || {}).some(
-        base => themeConfig.locales[base].algolia
-      )
-    return {
-      '@AlgoliaSearchBox': isAlgoliaSearch
-        ? path.resolve(__dirname, 'components/AlgoliaSearchBox.vue')
-        : path.resolve(__dirname, 'noopModule.js')
-    }
-  },
   plugins: [
     ['@vuepress/active-header-links', options.activeHeaderLinks],
     [
@@ -52,7 +38,6 @@ module.exports = (options, ctx) => ({
         ]
       }
     ],
-    '@vuepress/search',
     '@vuepress/plugin-nprogress',
     '@vuepress/back-to-top',
     ['@vuepress/medium-zoom', { selector: '.page img' }],

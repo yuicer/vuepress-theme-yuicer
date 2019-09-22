@@ -20,11 +20,12 @@
   },
   "homepage": "https://github.com/yuicer/vuepress-theme-yuicer#readme",
   "dependencies": {
-    "@vuepress/plugin-back-to-top": "1.0.3",
-    "@vuepress/plugin-blog": "1.2.4",
-    "@vuepress/plugin-google-analytics": "1.0.3",
-    "@vuepress/plugin-medium-zoom": "1.0.3",
+    "@vuepress/plugin-back-to-top": "1.1.0",
+    "@vuepress/plugin-blog": "1.2.5",
+    "@vuepress/plugin-google-analytics": "1.1.0",
+    "@vuepress/plugin-medium-zoom": "1.1.0",
     "@yuicer/vuepress-plugin-sorted-pages": "^2.0.0",
+    "lodash": "^4.17.15",
     "moment": "2.24.0"
   },
   "gitHead": "122751c832d77ff1840c1b1aa54c1a0753cde964"
