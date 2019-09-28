@@ -1,10 +1,10 @@
 # @yuicer/vuepress-theme-yuicer
 
-  **[示例项目](https://github.com/yuicer/blog)**
+**[示例项目](https://github.com/yuicer/blog)**
 
 > theme-vue for vuepress
 
-> 由于之前一直在用 hexo ，所以有些功能会和 hexo 比较类似，比如页面的样式，文件目录结构的约定【 _post , _draft 】，脚手架命令【 hexo new xxx】 => 【vuepress new xxx】
+> 由于之前一直在用 hexo ，所以有些功能会和 hexo 比较类似，比如页面的样式，文件目录结构的约定【 \_post , \_draft 】，脚手架命令【 hexo new xxx】 => 【vuepress new docs xxx】，docs 为你的文档站点目录，等同与 `vuepress dev docs` , `vuepress build docs` 这两条命令中的 docs。
 
 ### 安装使用
 

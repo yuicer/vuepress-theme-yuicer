@@ -6,10 +6,9 @@ module.exports = async ({ targetDir, title, tpl = '' }) => {
   const defaultContent = `---
   title: ${title}
   date: ${moment().format('YYYY-MM-DD hh:mm:ss')}
-  ---
+---
   
-  <!-- more -->
-  `
+<!-- more -->`
 
   try {
     fs.writeFileSync(
