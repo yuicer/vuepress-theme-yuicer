@@ -42,6 +42,7 @@ module.exports = (options, ctx) => ({
     '@vuepress/back-to-top',
     ['@vuepress/medium-zoom', { selector: '.page img' }],
     '@yuicer/sorted-pages',
+    ['smooth-scroll', true],
     [
       '@vuepress/google-analytics',
       {

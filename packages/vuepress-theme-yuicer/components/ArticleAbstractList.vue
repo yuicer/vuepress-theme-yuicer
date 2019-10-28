@@ -110,7 +110,7 @@ export default {
       a, span
         color $tagColor
         margin 0 0.4rem
-        font-size 0.6rem
+        font-size 0.7rem
     .img
       box-sizing border-box
       width calc(100% + 40px)

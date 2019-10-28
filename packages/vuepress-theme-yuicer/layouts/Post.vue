@@ -18,8 +18,9 @@
           <span>{{ time }}</span>
         </div>
       </div>
-
-      <img class="img" v-if="$page.frontmatter.img" :src="getImgUrl($page.frontmatter.img)" />
+      <div class="img">
+        <img v-if="$page.frontmatter.img" :src="getImgUrl($page.frontmatter.img)" />
+      </div>
       <Content class="theme-yuicer-content" />
 
       <div class="page-nav" v-if="sortedPage">
@@ -67,38 +68,57 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
-.page
-  word-break break-all
-  overflow hidden
-  min-height 70vh
-  background $backgroundColor
-  position relative
-  .page-title
-    text-align center
-    font-size 1.32rem
-  .tags
-    display flex
-    justify-content center
-    margin-bottom 1.2rem
-    transition color 0.2s
-    a, span
-      color $tagColor
-      margin 0 0.4rem
-      font-size 0.6rem
-  .img
-    box-sizing border-box
-    width 100%
-    background-repeat no-repeat
-    background-size cover
-    background-position center
-    border 0.2rem solid $backgroundColor
-  .page-nav
-    position absolute
-    bottom 0
-    width calc(100% - 4.4rem)
-    .inner
-      font-size 0.8rem
-      overflow auto // clear float
-    .next
-      float right
+.page {
+  word-break: break-all;
+  overflow: hidden;
+  min-height: 70vh;
+  background: $backgroundColor;
+  position: relative;
+
+  .page-title {
+    text-align: center;
+    font-size: 1.32rem;
+  }
+
+  .tags {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+    transition: color 0.2s;
+
+    a, span {
+      color: $tagColor;
+      margin: 0 0.4rem;
+      font-size: 0.7rem;
+    }
+  }
+
+  .img {
+    text-align: center;
+
+    >img {
+      box-sizing: border-box;
+      max-width: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      border: 0.2rem solid $backgroundColor;
+    }
+  }
+
+  .page-nav {
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 4.4rem);
+
+    .inner {
+      font-size: 0.8rem;
+      overflow: auto; // clear float
+    }
+
+    .next {
+      float: right;
+    }
+  }
+}
 </style>

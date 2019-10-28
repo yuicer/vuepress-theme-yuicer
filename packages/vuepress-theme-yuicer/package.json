@@ -3,10 +3,6 @@
   "version": "2.0.5",
   "description": "theme for vuepress",
   "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/yuicer/vuepress-theme-yuicer.git"
-  },
   "author": "yuicer1@gmail.com",
   "keywords": [
     "vuepress, vueoress-theme"
@@ -20,10 +16,11 @@
   },
   "homepage": "https://github.com/yuicer/vuepress-theme-yuicer#readme",
   "dependencies": {
-    "@vuepress/plugin-back-to-top": "1.1.0",
+    "@vuepress/plugin-back-to-top": "1.2.0",
     "@vuepress/plugin-blog": "1.2.5",
-    "@vuepress/plugin-google-analytics": "1.1.0",
-    "@vuepress/plugin-medium-zoom": "1.1.0",
+    "@vuepress/plugin-google-analytics": "1.2.0",
+    "@vuepress/plugin-medium-zoom": "1.2.0",
+    "vuepress-plugin-smooth-scroll": "0.0.3",
     "@yuicer/vuepress-plugin-sorted-pages": "^2.0.0",
     "lodash": "^4.17.15",
     "moment": "2.24.0"
