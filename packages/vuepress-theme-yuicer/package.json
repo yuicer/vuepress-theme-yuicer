@@ -1,6 +1,6 @@
 {
   "name": "@yuicer/vuepress-theme-yuicer",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "theme for vuepress",
   "main": "index.js",
   "author": "yuicer1@gmail.com",
@@ -20,10 +20,10 @@
     "@vuepress/plugin-blog": "1.2.5",
     "@vuepress/plugin-google-analytics": "1.2.0",
     "@vuepress/plugin-medium-zoom": "1.2.0",
-    "vuepress-plugin-smooth-scroll": "0.0.3",
-    "@yuicer/vuepress-plugin-sorted-pages": "^2.0.0",
+    "@yuicer/vuepress-plugin-sorted-pages": "^2.0.6",
     "lodash": "^4.17.15",
-    "moment": "2.24.0"
+    "moment": "2.24.0",
+    "vuepress-plugin-smooth-scroll": "0.0.3"
   },
   "gitHead": "122751c832d77ff1840c1b1aa54c1a0753cde964"
 }
