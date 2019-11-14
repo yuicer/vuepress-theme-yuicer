@@ -23,18 +23,18 @@
       </div>
       <Content class="theme-yuicer-content" />
 
-      <div class="page-nav" v-if="sortedPage">
+      <div class="page-nav" v-if="pageContext">
         <p class="inner">
-          <span v-if="sortedPage.prev" class="prev">
-            <router-link class="prev" :to="sortedPage.prev.path">
+          <span v-if="pageContext.prev" class="prev">
+            <router-link class="prev" :to="pageContext.prev.path">
               <span>←</span>
-              {{ sortedPage.prev.title || sortedPage.prev.path }}
+              {{ pageContext.prev.title || pageContext.prev.path }}
             </router-link>
           </span>
 
-          <span v-if="sortedPage.next" class="next">
-            <router-link class="next" :to="sortedPage.next.path">
-              {{ sortedPage.next.title || sortedPage.next.path }}
+          <span v-if="pageContext.next" class="next">
+            <router-link class="next" :to="pageContext.next.path">
+              {{ pageContext.next.title || pageContext.next.path }}
               <span>→</span>
             </router-link>
           </span>
@@ -52,12 +52,12 @@ import { isExternal } from '@theme/util'
 
 export default {
   computed: {
-    sortedPage() {
-      return this.$sortedPage || null
+    pageContext() {
+      return this.$pageContext || null
     },
     time() {
-      const { time } = this.$page
-      return moment(time).format('MMM D  YYYY')
+      const { date } = this.$page.frontmatter
+      return moment(date).format('MMM D  YYYY')
     }
   },
   methods: {

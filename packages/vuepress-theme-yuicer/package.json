@@ -17,13 +17,13 @@
   "homepage": "https://github.com/yuicer/vuepress-theme-yuicer#readme",
   "dependencies": {
     "@vuepress/plugin-back-to-top": "1.2.0",
-    "@vuepress/plugin-blog": "1.2.5",
+    "@vuepress/plugin-blog": "1.5.1",
     "@vuepress/plugin-google-analytics": "1.2.0",
     "@vuepress/plugin-medium-zoom": "1.2.0",
     "@yuicer/vuepress-plugin-sorted-pages": "^2.0.6",
     "lodash": "^4.17.15",
     "moment": "2.24.0",
-    "vuepress-plugin-smooth-scroll": "0.0.3"
+    "vuepress-plugin-smooth-scroll": "0.0.7"
   },
   "gitHead": "122751c832d77ff1840c1b1aa54c1a0753cde964"
 }

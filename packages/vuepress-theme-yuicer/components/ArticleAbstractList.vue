@@ -9,9 +9,8 @@
       v-for="{
         path,
         title,
-        time,
         excerpt,
-        frontmatter: { tag, img, imgStyle, isFullRow }
+        frontmatter: { date, tag, img, imgStyle, isFullRow }
       } in pages"
       :key="path"
       class="ariticle"
@@ -34,7 +33,7 @@
           </router-link>
         </div>
         <div class="time">
-          <span>{{ getTime(time) }}</span>
+          <span>{{ getTime(date) }}</span>
         </div>
       </div>
       <div
@@ -56,7 +55,7 @@ import { isExternal } from '@theme/util'
 export default {
   computed: {
     pages() {
-      return this.$pagination.pages
+      return this.$sortedPages
     }
   },
   methods: {
@@ -74,60 +73,90 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.wrapper
-  @media (min-width: $MacPro)
-    columns 3 auto
-    column-gap 32px
-  @media (max-width: $MacPro)
-    column-gap 32px
-    columns 2 auto
-  @media (max-width: $MQMobile)
-    columns 1 auto
-  .ariticle
-    break-inside avoid
-    cursor pointer
-    text-align center
-    margin 16px auto
-    padding 16px 20px 10px
-    line-height 1.5
-    border-radius $borderRadius
-    box-shadow $boxShadow
-    transition transform 0.2s
-    background-color $backgroundColor
-    &:hover
-      transform scaleX(1.03)
-      transform-origin center
-    .ariticle-title
-      font-size 1.32rem
-      transition color 0.2s
-      a
-        font-weight 400
-    .tags
-      display flex
-      justify-content center
-      margin-bottom 1.2rem
-      transition color 0.2s
-      a, span
-        color $tagColor
-        margin 0 0.4rem
-        font-size 0.7rem
-    .img
-      box-sizing border-box
-      width calc(100% + 40px)
-      position relative
-      left -20px
-      border-radius $borderRadius
-      height 20rem
-      background-repeat no-repeat
-      background-size cover
-      background-position center
-      @media (max-width: $MQNarrow)
-        height 14rem
-      @media (max-width: $MQMobileNarrow)
-        height 8rem
-    .abstract
-      text-align left
-      font-size 0.9rem
-      >>>img
-        max-width 100%
+.wrapper {
+  @media (min-width: $MacPro) {
+    columns: 3 auto;
+    column-gap: 32px;
+  }
+
+  @media (max-width: $MacPro) {
+    column-gap: 32px;
+    columns: 2 auto;
+  }
+
+  @media (max-width: $MQMobile) {
+    columns: 1 auto;
+  }
+
+  .ariticle {
+    break-inside: avoid;
+    cursor: pointer;
+    text-align: center;
+    margin: 16px auto;
+    padding: 16px 20px 10px;
+    line-height: 1.5;
+    border-radius: $borderRadius;
+    box-shadow: $boxShadow;
+    transition: transform 0.2s;
+    background-color: $backgroundColor;
+
+    &:hover {
+      @media (min-width: $MQMobile) {
+        transform: scaleX(1.03);
+        transform-origin: center;
+      }
+    }
+
+    .ariticle-title {
+      font-size: 1.32rem;
+      transition: color 0.2s;
+
+      a {
+        font-weight: 400;
+      }
+    }
+
+    .tags {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+      transition: color 0.2s;
+
+      a, span {
+        color: $tagColor;
+        margin: 0 0.4rem;
+        font-size: 0.7rem;
+      }
+    }
+
+    .img {
+      box-sizing: border-box;
+      width: calc(100% + 40px);
+      position: relative;
+      left: -20px;
+      border-radius: $borderRadius;
+      height: 20rem;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+
+      @media (max-width: $MQNarrow) {
+        height: 14rem;
+      }
+
+      @media (max-width: $MQMobileNarrow) {
+        height: 8rem;
+      }
+    }
+
+    .abstract {
+      text-align: left;
+      font-size: 0.9rem;
+
+      >>>img {
+        max-width: 100%;
+      }
+    }
+  }
+}
 </style>
