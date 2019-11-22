@@ -1,7 +1,5 @@
 # @yuicer/vuepress-plugin-sorted-pages
 
-> vuepress-plugin
-
 ### 排序标准
 
 排序强依赖于 md yaml 中的 date 属性，date 如果未填写则默认补为最新时间

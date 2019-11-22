@@ -2,7 +2,9 @@
 
 **[示例项目](https://github.com/yuicer/blog)**
 
-> theme-vue for vuepress
+**[页面预览](https://blog.yuicer.com/)**
+
+> theme for vuepress
 
 > 由于之前一直在用 hexo ，所以有些功能会和 hexo 比较类似，比如页面的样式，文件目录结构的约定【 \_post , \_draft 】，脚手架命令【 hexo new xxx】 => 【vuepress new docs xxx】，docs 为你的文档站点目录，等同与 `vuepress dev docs` , `vuepress build docs` 这两条命令中的 docs。
 
@@ -56,7 +58,7 @@ docs
 
 ### 文章上下文
 
-[vuepress-plugin-sorted-pages](../vuepress-plugin-sorted-pages/README.md)
+[vuepress-plugin-sorted-pages](./packages/vuepress-plugin-sorted-pages/README.md)
 
 该插件会自动将当前文章的上一篇和下一篇文章取到后放在全局计算属性 \$sortedPage 中
 
@@ -81,7 +83,7 @@ themeConfig:{
 ```yaml
 ---
 # 文章标题[必须字段]
-title: fdsfsdf
+title: 摸鱼鱼
 # 日期 推荐填写如下格式（会传入 new Date()）[必须字段]
 date: 2018-05-04 19:18:40
 
