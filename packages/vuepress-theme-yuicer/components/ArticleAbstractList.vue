@@ -55,7 +55,7 @@ import { isExternal } from '@theme/util'
 export default {
   computed: {
     pages() {
-      return this.$sortedPages
+      return (this.$pagination && this.$pagination.pages) || this.$sortedPages
     }
   },
   methods: {
