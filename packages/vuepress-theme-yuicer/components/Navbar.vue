@@ -1,5 +1,5 @@
 <template>
-  <header class="navbar">
+  <header class="navbar" :class="{ 'navbar-hidden': !isShow }">
     <router-link :to="$localePath" class="home-link">
       <img
         class="logo"
@@ -41,7 +41,8 @@ export default {
 
   data() {
     return {
-      linksWrapMaxWidth: null
+      linksWrapMaxWidth: null,
+      isShow: true
     }
   },
 
@@ -61,6 +62,19 @@ export default {
     }
     handleLinksWrapWidth()
     window.addEventListener('resize', handleLinksWrapWidth, false)
+
+    this.listenScroll()
+  },
+  methods: {
+    listenScroll() {
+      let last_known_scroll_position = 0
+      window.addEventListener('scroll', e => {
+        if (last_known_scroll_position < window.scrollY && this.isShow === true) this.isShow = false
+        else if (last_known_scroll_position > window.scrollY && this.isShow === false)
+          this.isShow = true
+        last_known_scroll_position = window.scrollY
+      })
+    }
   }
 }
 
@@ -73,59 +87,83 @@ function css(el, property) {
 </script>
 
 <style lang="stylus">
-$navbar-vertical-padding = 0.7rem
-$navbar-horizontal-padding = 1.5rem
+$navbar-vertical-padding = 0.7rem;
+$navbar-horizontal-padding = 1.5rem;
 
-.navbar
-  padding $navbar-vertical-padding $navbar-horizontal-padding
-  line-height $navbarHeight - 1.4rem
-  background $navbarColor
-  position: fixed
-  z-index: 20
-  top: 0
-  left: 0
-  right: 0
-  height: $navbarHeight
-  box-shadow: $boxShadow
-  box-sizing: border-box
-  transition transform 0.3s ease
-  @media (max-width: $MQMobileNarrow)
-    background-color: $backgroundColor
-  a, span, img
-    display inline-block
-  .logo
-    height $navbarHeight - 1.4rem
-    min-width $navbarHeight - 1.4rem
-    margin-right 0.8rem
-    vertical-align top
-  .site-name
-    font-size 1.3rem
-    font-weight 600
-    color $textColor
-    position relative
-  .links
-    padding-left 1.5rem
-    box-sizing border-box
-    white-space nowrap
-    font-size 0.9rem
-    position absolute
-    right $navbar-horizontal-padding
-    top $navbar-vertical-padding
-    display flex
-    .search-box
-      flex: 0 0 auto
-      vertical-align top
+.navbar-hidden {
+  transform: translateY(-100%);
+}
 
-@media (max-width: $MQMobile)
-  .navbar
-    padding-left 4rem
-    .can-hide
-      display none
-    .links
-      padding-left 1.5rem
-    .site-name
-      width calc(100vw - 9.4rem)
-      overflow hidden
-      white-space nowrap
-      text-overflow ellipsis
+.navbar {
+  padding: $navbar-vertical-padding $navbar-horizontal-padding;
+  line-height: $navbarHeight - 1.4rem;
+  background: $navbarColor;
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $navbarHeight;
+  box-shadow: $boxShadow;
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+
+  @media (max-width: $MQMobileNarrow) {
+    background-color: $backgroundColor;
+  }
+
+  a, span, img {
+    display: inline-block;
+  }
+
+  .logo {
+    height: $navbarHeight - 1.4rem;
+    min-width: $navbarHeight - 1.4rem;
+    margin-right: 0.8rem;
+    vertical-align: top;
+  }
+
+  .site-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: $textColor;
+    position: relative;
+  }
+
+  .links {
+    padding-left: 1.5rem;
+    box-sizing: border-box;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    position: absolute;
+    right: $navbar-horizontal-padding;
+    top: $navbar-vertical-padding;
+    display: flex;
+
+    .search-box {
+      flex: 0 0 auto;
+      vertical-align: top;
+    }
+  }
+}
+
+@media (max-width: $MQMobile) {
+  .navbar {
+    padding-left: 4rem;
+
+    .can-hide {
+      display: none;
+    }
+
+    .links {
+      padding-left: 1.5rem;
+    }
+
+    .site-name {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}
 </style>

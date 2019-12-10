@@ -97,19 +97,10 @@ export default {
     line-height: 1.5;
     border-radius: $borderRadius;
     box-shadow: $boxShadow;
-    transition: transform 0.2s;
     background-color: $backgroundColor;
-
-    &:hover {
-      @media (min-width: $MQMobile) {
-        transform: scaleX(1.03);
-        transform-origin: center;
-      }
-    }
 
     .ariticle-title {
       font-size: 1.32rem;
-      transition: color 0.2s;
 
       a {
         font-weight: 400;
@@ -120,7 +111,6 @@ export default {
       display: flex;
       justify-content: center;
       margin-bottom: 1.2rem;
-      transition: color 0.2s;
 
       a, span {
         color: $tagColor;
