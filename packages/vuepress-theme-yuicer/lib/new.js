@@ -5,7 +5,7 @@ const moment = require('moment')
 module.exports = async ({ targetDir, title, tpl = '' }) => {
   const defaultContent = `---
   title: ${title}
-  date: ${moment().format('YYYY-MM-DD hh:mm:ss')}
+  date: ${moment().format('YYYY-MM-DD HH:mm:ss')}
 ---
   
 <!-- more -->`

@@ -102,7 +102,6 @@ export default {
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
-      border: 0.2rem solid $backgroundColor;
     }
   }
 
