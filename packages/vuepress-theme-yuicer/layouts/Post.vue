@@ -21,6 +21,15 @@
       <div class="img">
         <img v-if="$page.frontmatter.img" :src="getImgUrl($page.frontmatter.img)" />
       </div>
+
+      <audio
+        v-if="musicId"
+        controls
+        loop
+        autoplay="autoplay"
+        :src="`https://music.163.com/song/media/outer/url?id=${musicId}.mp3`"
+      ></audio>
+
       <Content class="theme-yuicer-content" />
 
       <div class="page-nav" v-if="pageContext">
@@ -52,6 +61,10 @@ import { isExternal } from '@theme/util'
 
 export default {
   computed: {
+    musicId() {
+      const { mid } = this.$page.frontmatter
+      return mid || null
+    },
     pageContext() {
       return this.$pageContext || null
     },
@@ -67,7 +80,12 @@ export default {
   }
 }
 </script>
+
 <style lang="stylus" scoped>
+audio{
+  height 24px;
+  outline none;
+}
 .page {
   word-break: break-all;
   overflow: hidden;

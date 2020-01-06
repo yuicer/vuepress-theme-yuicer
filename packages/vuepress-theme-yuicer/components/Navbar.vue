@@ -16,16 +16,7 @@
       >
     </router-link>
 
-    <div
-      class="links"
-      :style="
-        linksWrapMaxWidth
-          ? {
-              'max-width': linksWrapMaxWidth + 'px'
-            }
-          : {}
-      "
-    >
+    <div class="links">
       <SearchBox />
       <NavLinks class="can-hide" />
     </div>
@@ -36,42 +27,29 @@
 import SearchBox from '@theme/components/SearchBox'
 import NavLinks from '@theme/components/NavLinks.vue'
 
+const MIN_NUM = 6
+
 export default {
   components: { NavLinks, SearchBox },
 
   data() {
     return {
-      linksWrapMaxWidth: null,
       isShow: true
     }
   },
 
   mounted() {
-    const MOBILE_DESKTOP_BREAKPOINT = 719 // refer to config.styl
-    const NAVBAR_VERTICAL_PADDING =
-      parseInt(css(this.$el, 'paddingLeft')) + parseInt(css(this.$el, 'paddingRight'))
-    const handleLinksWrapWidth = () => {
-      if (document.documentElement.clientWidth < MOBILE_DESKTOP_BREAKPOINT) {
-        this.linksWrapMaxWidth = null
-      } else {
-        this.linksWrapMaxWidth =
-          this.$el.offsetWidth -
-          NAVBAR_VERTICAL_PADDING -
-          ((this.$refs.siteName && this.$refs.siteName.offsetWidth) || 0)
-      }
-    }
-    handleLinksWrapWidth()
-    window.addEventListener('resize', handleLinksWrapWidth, false)
-
     this.listenScroll()
   },
   methods: {
     listenScroll() {
       let last_known_scroll_position = 0
       window.addEventListener('scroll', e => {
-        if (last_known_scroll_position < window.scrollY && this.isShow === true) this.isShow = false
-        else if (last_known_scroll_position > window.scrollY && this.isShow === false)
+        if (this.isShow === true && last_known_scroll_position + MIN_NUM < window.scrollY) {
+          this.isShow = false
+        } else if (this.isShow === false && last_known_scroll_position - MIN_NUM > window.scrollY) {
           this.isShow = true
+        }
         last_known_scroll_position = window.scrollY
       })
     }
@@ -149,8 +127,6 @@ $navbar-horizontal-padding = 1.5rem;
 
 @media (max-width: $MQMobile) {
   .navbar {
-    padding-left: 4rem;
-
     .can-hide {
       display: none;
     }

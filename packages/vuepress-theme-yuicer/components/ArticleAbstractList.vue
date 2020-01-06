@@ -63,6 +63,7 @@ export default {
       this.$router.push(path)
     },
     getTime(time) {
+      console.log('time', time)
       return moment(time).format('MMM D  YYYY')
     },
     getImgUrl(path) {
