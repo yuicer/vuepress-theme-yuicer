@@ -85,6 +85,7 @@ export default {
 audio{
   height 24px;
   outline none;
+  max-width 100%;
 }
 .page {
   word-break: break-all;
@@ -120,6 +121,7 @@ audio{
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
+      margin-bottom 24px;
     }
   }
 
