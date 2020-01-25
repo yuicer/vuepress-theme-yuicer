@@ -36,14 +36,14 @@
           <span>{{ getTime(date) }}</span>
         </div>
       </div>
-      <div
-        class="img"
-        v-if="img"
-        :style="{
-          backgroundImage: getImgUrl(img),
-          ...imgStyle
-        }"
-      ></div>
+      <div class="img" v-if="img">
+        <img
+          :style="{
+            ...imgStyle
+          }"
+          :src="getImgUrl(img)"
+        />
+      </div>
       <div class="abstract" v-html="excerpt" />
     </div>
   </div>
@@ -66,7 +66,7 @@ export default {
       return moment(time).format('MMM D  YYYY')
     },
     getImgUrl(path) {
-      return isExternal(path) ? `url(${path})` : `url(${this.$withBase(path)})`
+      return isExternal(path) ? `${path}` : `${this.$withBase(path)}`
     }
   }
 }
@@ -124,18 +124,11 @@ export default {
       width: calc(100% + 40px);
       position: relative;
       left: -20px;
-      border-radius: $borderRadius;
-      height: 20rem;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
 
-      @media (max-width: $MQNarrow) {
-        height: 14rem;
-      }
-
-      @media (max-width: $MQMobileNarrow) {
-        height: 8rem;
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: $borderRadius;
       }
     }
 
