@@ -1,6 +1,6 @@
 {
   "name": "@yuicer/vuepress-theme-yuicer",
-  "version": "2.2.5",
+  "version": "2.3.0",
   "description": "theme for vuepress",
   "main": "index.js",
   "author": "yuicer1@gmail.com",
