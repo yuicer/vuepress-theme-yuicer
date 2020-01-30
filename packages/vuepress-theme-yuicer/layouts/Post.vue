@@ -82,62 +82,53 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-audio{
-  height 24px;
-  outline none;
-  max-width 100%;
-}
-.page {
+audio
+  height: 24px;
+  outline: none;
+  max-width: 100%;
+
+.page
   word-break: break-all;
   overflow: hidden;
   min-height: 70vh;
   background: $backgroundColor;
   position: relative;
 
-  .page-title {
+  .page-title
     text-align: center;
     font-size: 1.32rem;
-  }
 
-  .tags {
+  .tags
     display: flex;
     justify-content: center;
     margin-bottom: 1.2rem;
     transition: color 0.2s;
 
-    a, span {
+    a, span
       color: $tagColor;
       margin: 0 0.4rem;
       font-size: 0.7rem;
-    }
-  }
 
-  .img {
+  .img
     text-align: center;
 
-    >img {
+    >img
       box-sizing: border-box;
       max-width: 100%;
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
-      margin-bottom 24px;
-    }
-  }
+      margin-bottom: 24px;
 
-  .page-nav {
+  .page-nav
     position: absolute;
     bottom: 0;
     width: calc(100% - 4.4rem);
 
-    .inner {
+    .inner
       font-size: 0.8rem;
       overflow: auto; // clear float
-    }
 
-    .next {
+    .next
       float: right;
-    }
-  }
-}
 </style>
