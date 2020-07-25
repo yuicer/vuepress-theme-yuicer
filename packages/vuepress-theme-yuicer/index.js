@@ -1,7 +1,5 @@
-const path = require('path')
-
 // Theme API.
-module.exports = (options, ctx) => ({
+module.exports = (options) => ({
   // 根组件设置
   extendCli(cli) {
     cli
@@ -15,11 +13,10 @@ module.exports = (options, ctx) => ({
         require('./lib/new')({ targetDir, title, tpl })
       })
   },
-  extendMarkdown: md => {
+  extendMarkdown: (md) => {
     // 使用更多的 markdown-it 插件!
     md.use(require('markdown-it-katex'))
   },
-  clientRootMixin: path.resolve(__dirname, './model/mixin.js'),
   plugins: [
     [
       '@vuepress/blog',

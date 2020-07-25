@@ -1,5 +1,5 @@
 <template>
-  <div class="theme-container" :class="pageClasses">
+  <div class="theme-container" :class="pageClasses" :style="pageStyles">
     <Navbar v-if="shouldShowNavbar" />
     <div class="wrapper">
       <slot />
@@ -8,6 +8,9 @@
 </template>
 
 <script>
+const brightness = 'linear-gradient(#ccc 0%,#ccc 100%)'
+
+import { isExternal } from '@theme/util'
 import Navbar from '@theme/components/Navbar.vue'
 export default {
   components: { Navbar },
@@ -34,6 +37,20 @@ export default {
         },
         userPageClass
       ]
+    },
+    pageStyles() {
+      const { bgImg, bgColor } = this.$site.themeConfig
+      return {
+        backgroundImage: this.getImgUrl(bgImg),
+        backgroundColor: bgColor
+      }
+    }
+  },
+  methods: {
+    getImgUrl(path) {
+      return isExternal(path)
+        ? `url(${path}),${brightness}`
+        : `url(${this.$withBase(path)}),${brightness}`
     }
   }
 }
