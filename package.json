@@ -1,7 +1,6 @@
 {
   "name": "vuepress-theme-yuicer",
   "version": "1.0.0",
-  "description": "",
   "main": ".eslintrc.js",
   "scripts": {
     "lint": "lint-staged",
@@ -22,20 +21,20 @@
     ]
   },
   "dependencies": {
-    "lerna": "3.18.4"
+    "lerna": "3.22.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "8.2.0",
-    "@commitlint/config-conventional": "8.2.0",
-    "babel-eslint": "10.0.3",
-    "eslint": "6.6.0",
-    "eslint-config-prettier": "6.5.0",
-    "eslint-plugin-prettier": "3.1.1",
-    "eslint-plugin-vue": "6.0.1",
-    "husky": "3.0.9",
-    "lint-staged": "9.4.2",
-    "prettier": "1.19.1",
-    "pretty-quick": "2.0.0"
+    "@commitlint/cli": "9.1.1",
+    "@commitlint/config-conventional": "9.1.1",
+    "babel-eslint": "10.1.0",
+    "eslint": "7.5.0",
+    "eslint-config-prettier": "6.11.0",
+    "eslint-plugin-prettier": "3.1.4",
+    "eslint-plugin-vue": "6.2.2",
+    "husky": "4.2.5",
+    "lint-staged": "10.2.11",
+    "prettier": "2.0.5",
+    "pretty-quick": "2.0.1"
   },
   "repository": {
     "type": "git",

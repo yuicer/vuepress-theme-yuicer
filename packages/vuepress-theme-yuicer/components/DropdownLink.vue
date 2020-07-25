@@ -45,7 +45,6 @@
 <script>
 import NavLink from '@theme/components/NavLink.vue'
 import DropdownTransition from '@theme/components/DropdownTransition.vue'
-import last from 'lodash/last'
 
 export default {
   components: { NavLink, DropdownTransition },
@@ -74,7 +73,8 @@ export default {
     },
 
     isLastItemOfArray(item, array) {
-      return last(array) === item
+      if (Array.isArray(array)) return array[array.length - 1] === item
+      return false
     }
   },
 
