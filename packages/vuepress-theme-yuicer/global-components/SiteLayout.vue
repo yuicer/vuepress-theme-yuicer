@@ -42,7 +42,13 @@ export default {
       const { bgImg, bgColor } = this.$site.themeConfig
       return {
         backgroundImage: this.getImgUrl(bgImg),
-        backgroundColor: bgColor
+        backgroundColor: bgColor,
+        backgroundAttachment: 'fixed',
+        backgroundPositionX: '50%',
+        backgroundPositionY: '0%',
+        backgroundBlendmode: 'multiply',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover'
       }
     }
   },
