@@ -21,20 +21,20 @@
     ]
   },
   "dependencies": {
-    "lerna": "3.22.1"
+    "lerna": "4.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "9.1.1",
-    "@commitlint/config-conventional": "9.1.1",
+    "@commitlint/cli": "12.1.4",
+    "@commitlint/config-conventional": "12.1.4",
     "babel-eslint": "10.1.0",
-    "eslint": "7.5.0",
-    "eslint-config-prettier": "6.11.0",
-    "eslint-plugin-prettier": "3.1.4",
-    "eslint-plugin-vue": "6.2.2",
+    "eslint": "7.26.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-prettier": "3.4.0",
+    "eslint-plugin-vue": "7.9.0",
     "husky": "4.2.5",
     "lint-staged": "10.2.11",
-    "prettier": "2.0.5",
-    "pretty-quick": "2.0.1"
+    "prettier": "2.3.0",
+    "pretty-quick": "3.1.0"
   },
   "repository": {
     "type": "git",

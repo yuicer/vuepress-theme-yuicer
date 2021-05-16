@@ -1,4 +1,4 @@
-const { path } = require('@vuepress/shared-utils')
+const path = require('path')
 
 module.exports = {
   // 注入一个排序好的全局计算属性

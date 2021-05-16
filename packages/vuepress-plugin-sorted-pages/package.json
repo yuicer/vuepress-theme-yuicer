@@ -21,8 +21,6 @@
     "url": "https://github.com/yuicer/vuepress-theme-yuicer/issues"
   },
   "homepage": "https://github.com/yuicer/vuepress-theme-yuicer#readme",
-  "dependencies": {
-    "@vuepress/shared-utils": "1.7.1"
-  },
+  "dependencies": {},
   "gitHead": "775792530291fbdee1a9297e9aecf55749f97e7b"
 }

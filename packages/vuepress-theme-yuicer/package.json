@@ -16,13 +16,13 @@
   },
   "homepage": "https://github.com/yuicer/vuepress-theme-yuicer#readme",
   "dependencies": {
-    "@vuepress/plugin-back-to-top": "1.7.1",
-    "@vuepress/plugin-blog": "1.9.3",
-    "@vuepress/plugin-google-analytics": "1.7.1",
-    "@vuepress/plugin-medium-zoom": "1.7.1",
-    "@yuicer/vuepress-plugin-sorted-pages": "^2.3.6",
+    "@vuepress/plugin-back-to-top": "1.8.2",
+    "@vuepress/plugin-blog": "1.9.4",
+    "@vuepress/plugin-google-analytics": "1.8.2",
+    "@vuepress/plugin-medium-zoom": "1.8.2",
+    "@yuicer/vuepress-plugin-sorted-pages": "2.3.6",
     "markdown-it-katex": "2.0.3",
-    "moment": "2.27.0",
+    "moment": "2.29.1",
     "vuepress-plugin-smooth-scroll": "0.0.10"
   },
   "gitHead": "122751c832d77ff1840c1b1aa54c1a0753cde964"
