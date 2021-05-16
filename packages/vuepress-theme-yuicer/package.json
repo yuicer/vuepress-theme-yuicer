@@ -1,6 +1,6 @@
 {
   "name": "@yuicer/vuepress-theme-yuicer",
-  "version": "2.3.7",
+  "version": "2.3.8",
   "description": "theme for vuepress",
   "main": "index.js",
   "author": "yuicer1@gmail.com",
@@ -20,7 +20,7 @@
     "@vuepress/plugin-blog": "1.9.4",
     "@vuepress/plugin-google-analytics": "1.8.2",
     "@vuepress/plugin-medium-zoom": "1.8.2",
-    "@yuicer/vuepress-plugin-sorted-pages": "2.3.6",
+    "@yuicer/vuepress-plugin-sorted-pages": "2.3.7",
     "markdown-it-katex": "2.0.3",
     "moment": "2.29.1",
     "vuepress-plugin-smooth-scroll": "0.0.10"
