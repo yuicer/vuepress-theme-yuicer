@@ -15,7 +15,7 @@
       :key="path"
       class="ariticle"
       :style="{
-        columnSpan: isFullRow ? 'all' : ''
+        columnSpan: isFullRow ? 'all' : 'none'
       }"
       @click="toDetail(path)"
     >
@@ -27,7 +27,7 @@
           <router-link
             v-for="x in [].concat(tag)"
             :key="x"
-            :to="$tag && $tag.list.find(y => y.name === x).path"
+            :to="$tag && $tag.list.find((y) => y.name === x).path"
           >
             <span @click.stop>{{ x }}</span>
           </router-link>

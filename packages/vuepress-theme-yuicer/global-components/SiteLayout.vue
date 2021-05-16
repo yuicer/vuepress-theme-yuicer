@@ -46,7 +46,7 @@ export default {
         backgroundAttachment: 'fixed',
         backgroundPositionX: '50%',
         backgroundPositionY: '0%',
-        backgroundBlendmode: 'multiply',
+        backgroundBlendMode: 'multiply',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover'
       }
