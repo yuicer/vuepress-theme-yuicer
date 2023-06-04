@@ -10,16 +10,13 @@
           <router-link
             v-for="x in [].concat($page.frontmatter.tag)"
             :key="x"
-            :to="$tag && $tag.list.find(y => y.name === x).path"
+            :to="$tag && $tag.list.find((y) => y.name === x).path"
             >{{ x }}</router-link
           >
         </div>
         <div class="time">
           <span>{{ time }}</span>
         </div>
-      </div>
-      <div class="img">
-        <img v-if="$page.frontmatter.img" :src="getImgUrl($page.frontmatter.img)" />
       </div>
 
       <audio
@@ -114,17 +111,6 @@ audio
       color: $tagColor;
       margin: 0 0.4rem;
       font-size: 0.7rem;
-
-  .img
-    text-align: center;
-
-    >img
-      box-sizing: border-box;
-      max-width: 100%;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      margin-bottom: 24px;
 
   .page-nav
     position: absolute;

@@ -118,7 +118,7 @@ tag:
 - tag2
 
 ### 列表页封面样式
-# 列表封面，在列表页展示，同时会自动在详情页生成一个该 <img/> 标签
+# 列表封面
 img: /niconiconi.jpg
 # 封面样式
 imgStyle: { height: '100px' }
