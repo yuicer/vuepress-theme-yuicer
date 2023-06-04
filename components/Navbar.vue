@@ -1,5 +1,6 @@
 <template>
   <header class="navbar" :class="{ 'navbar-hidden': !isShow }">
+    <SideBar :links="links" v-if="isShow && links"/>
     <router-link :to="$localePath" class="home-link">
       <img
         class="logo"
@@ -18,19 +19,18 @@
 
     <div class="links">
       <SearchBox />
-      <NavLinks class="can-hide" />
     </div>
   </header>
 </template>
 
 <script>
 import SearchBox from '@theme/components/SearchBox'
-import NavLinks from '@theme/components/NavLinks.vue'
+import SideBar from '@theme/components/SideBar'
 
 const MIN_NUM = 6
 
 export default {
-  components: { NavLinks, SearchBox },
+  components: {  SearchBox ,SideBar},
 
   data() {
     return {
@@ -41,6 +41,13 @@ export default {
   mounted() {
     this.listenScroll()
   },
+
+  computed:{
+    links() {
+      return this.$site.themeConfig.links 
+    },
+  },
+
   methods: {
     listenScroll() {
       let last_known_scroll_position = 0
@@ -77,6 +84,7 @@ $navbar-horizontal-padding = 1.5rem;
   line-height: $navbarHeight - 1.4rem;
   background: $navbarColor;
   position: fixed;
+  display: flex;
   z-index: 20;
   top: 0;
   left: 0;
@@ -97,6 +105,7 @@ $navbar-horizontal-padding = 1.5rem;
   .logo {
     height: $navbarHeight - 1.4rem;
     min-width: $navbarHeight - 1.4rem;
+    border-radius: 50%;
     margin-right: 0.8rem;
     vertical-align: top;
   }

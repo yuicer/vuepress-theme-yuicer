@@ -44,9 +44,17 @@ docs
 
 ### 命令行功能
 
-全局安装 vuepress 脚手架功能 `npm i vuepress -g`
-
 在安装成功本主题后，使用 `vuepress --help` 可看到下面的新命令 new
+
+~~全局安装 vuepress 脚手架功能 `npm i vuepress -g`~~
+
+建议在项目的 package.json script 脚本中增加一个命令，依托 npm 命令使用，如
+
+```
+"scripts": {
+  "write": "vuepress new docs",
+}
+```
 
 `vuepress new [targetDir] [title]` 可以方便生成 md 文件。 targetDir 是你的文件目录，类似与上面目录结构的 docs，因为 vuepress 必须知道目标位置，所以必须有这一个路径参数。
 
@@ -58,15 +66,9 @@ docs
 
 ### 图片系统
 
-图片引用有两种形式，一种是使用完整外链【推荐】【请使用 https 图片】，另一种则是借助 vuepress 提供的 $withBase 。需要将资源图片放在 .vuepress/public/ 文件夹下，然后提供一个绝对路径，该主题会自动使用 $withBase 解析
+图片引用有两种形式，一种是使用完整外链【推荐】【请使用 https 图片】，另一种则是借助 vuepress 提供的 \$withBase 。需要将资源图片放在 .vuepress/public/ 文件夹下，然后提供一个绝对路径，该主题会自动使用 \$withBase 解析
 
 相关文档 [https://v1.vuepress.vuejs.org/zh/guide/assets.html#%E5%9F%BA%E7%A1%80%E8%B7%AF%E5%BE%84](https://v1.vuepress.vuejs.org/zh/guide/assets.html#%E5%9F%BA%E7%A1%80%E8%B7%AF%E5%BE%84)
-
-### 文章上下文
-
-[vuepress-plugin-sorted-pages](./packages/vuepress-plugin-sorted-pages/README.md)
-
-该插件会自动将当前文章的上一篇和下一篇文章取到后放在全局计算属性 \$sortedPage 中
 
 ### 配置项目
 
@@ -78,9 +80,25 @@ themeConfig:{
   // 页面的背景图片
   bgImg: 'https://img.yuicer.com/bg/beach.jpg'
   // 页面的背景颜色
-  bgColor: '#f3edeb'
+  bgColor: '#f3edeb',
+  logo: 'https://img.yuicer.com/me.config/me.png',
   // 谷歌分析 id
-  ga: 'xxx'
+  ga: 'xxx',
+  // 侧边栏
+  links: [
+    {
+      text: 'github',
+      link: 'https://github.com/yuicer',
+    },
+    ...
+  ],
+  // 评论功能，详情查看 https://vssue.js.org/zh/guide/github.html#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84-oauth-app
+  comment: {
+    owner: 'xxx',
+    repo: 'xxx',
+    clientId: 'xxx',
+    clientSecret: 'xxx',
+  },
 }
 ```
 

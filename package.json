@@ -1,11 +1,10 @@
 {
-  "name": "vuepress-theme-yuicer",
-  "version": "1.0.0",
-  "main": ".eslintrc.js",
+  "name": "@yuicer/vuepress-theme-yuicer",
+  "version": "2.3.5",
+  "description": "theme for vuepress",
+  "main": "index.js",
   "scripts": {
-    "lint": "lint-staged",
-    "bootstrap": "lerna bootstrap",
-    "publish": "lerna publish"
+    "lint": "lint-staged"
   },
   "husky": {
     "hooks": {
@@ -20,31 +19,43 @@
       "git add"
     ]
   },
-  "dependencies": {
-    "lerna": "3.22.1"
-  },
-  "devDependencies": {
-    "@commitlint/cli": "9.1.1",
-    "@commitlint/config-conventional": "9.1.1",
-    "babel-eslint": "10.1.0",
-    "eslint": "7.5.0",
-    "eslint-config-prettier": "6.11.0",
-    "eslint-plugin-prettier": "3.1.4",
-    "eslint-plugin-vue": "6.2.2",
-    "husky": "4.2.5",
-    "lint-staged": "10.2.11",
-    "prettier": "2.0.5",
-    "pretty-quick": "2.0.1"
-  },
+  "author": "yuicer1@gmail.com",
+  "keywords": [
+    "vuepress, vueoress-theme"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yuicer/vuepress-theme-yuicer.git"
   },
-  "keywords": [],
-  "author": "",
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/yuicer/vuepress-theme-yuicer/issues"
   },
-  "homepage": "https://github.com/yuicer/vuepress-theme-yuicer#readme"
+  "homepage": "https://github.com/yuicer/vuepress-theme-yuicer#readme",
+  "dependencies": {
+    "@vuepress/plugin-back-to-top": "1.9.9",
+    "@vuepress/plugin-blog": "1.9.4",
+    "@vuepress/plugin-google-analytics": "1.9.9",
+    "@vuepress/plugin-medium-zoom": "1.9.9",
+    "markdown-it-katex": "2.0.3",
+    "moment": "2.29.4",
+    "vuepress-plugin-smooth-scroll": "0.0.10"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "17.6.5",
+    "@commitlint/config-conventional": "17.6.5",
+    "babel-eslint": "10.1.0",
+    "eslint": "8.42.0",
+    "eslint-config-prettier": "8.8.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-vue": "9.14.1",
+    "husky": "8.0.3",
+    "lint-staged": "13.2.2",
+    "prettier": "2.8.8",
+    "pretty-quick": "3.1.3"
+  },
+  "gitHead": "122751c832d77ff1840c1b1aa54c1a0753cde964"
 }

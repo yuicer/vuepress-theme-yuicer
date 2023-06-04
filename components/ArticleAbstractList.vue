@@ -93,7 +93,7 @@ export default {
     cursor: pointer;
     text-align: center;
     margin: 16px auto;
-    padding: 16px 20px 10px;
+    padding: 16px 20px 0px;
     line-height: 1.5;
     border-radius: $borderRadius;
     box-shadow: $boxShadow;
@@ -124,6 +124,7 @@ export default {
       width: calc(100% + 40px);
       position: relative;
       left: -20px;
+      font-size: 0;
 
       img {
         width: 100%;

@@ -50,6 +50,8 @@
         </p>
       </div>
 
+      <Comment v-if="$site.themeConfig.comment"/>
+
       <slot name="bottom" />
     </main>
   </SiteLayout>
@@ -57,9 +59,13 @@
 
 <script>
 import moment from 'moment'
+import { Comment } from '@vuepress/plugin-blog/lib/client/components'
 import { isExternal } from '@theme/util'
 
 export default {
+  components: {
+    Comment,
+  },
   computed: {
     musicId() {
       const { mid } = this.$page.frontmatter
