@@ -111,11 +111,8 @@ title: 摸鱼鱼
 # 日期 推荐填写如下格式（会传入 new Date()）[必须字段]
 date: 2018-05-04 19:18:40
 
-# 标签, 支持多个
-tag: tag1
-tag:
-- tag1
-- tag2
+# 标签
+tag: tag
 
 ### 列表页封面样式
 # 列表封面
@@ -125,5 +122,4 @@ imgStyle: { height: '100px' }
 # 封面列表默认采用列式布局，isFullRow 为 true 时该封面卡片会占满一整行
 isFullRow: true
 ---
-
 ```

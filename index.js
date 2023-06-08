@@ -43,17 +43,10 @@ module.exports = (options = {}) => ({
             id: 'post',
             dirname: '_post',
             path: '/',
+            itemPermalink: '/:slug',
             pagination: {
               lengthPerPage: 10
             }
-          }
-        ],
-        frontmatters: [
-          {
-            id: 'tag',
-            keys: ['tag'],
-            path: '/tag/',
-            layout: 'Tag'
           }
         ]
       }

@@ -9,7 +9,6 @@
       v-for="{
         path,
         title,
-        excerpt,
         frontmatter: { date, tag, img, imgStyle, isFullRow }
       } in pages"
       :key="path"
@@ -24,13 +23,7 @@
       </div>
       <div class="tags">
         <div v-if="tag" class="tag">
-          <router-link
-            v-for="x in [].concat(tag)"
-            :key="x"
-            :to="$tag && $tag.list.find((y) => y.name === x).path"
-          >
-            <span @click.stop>{{ x }}</span>
-          </router-link>
+          <span>{{ tag }}</span> 
         </div>
         <div class="time">
           <span>{{ getTime(date) }}</span>
@@ -44,7 +37,6 @@
           :src="getImgUrl(img)"
         />
       </div>
-      <div class="abstract" v-html="excerpt" />
     </div>
   </div>
 </template>
@@ -89,10 +81,11 @@ export default {
   }
 
   .ariticle {
+    overflow: hidden;
     break-inside: avoid;
     cursor: pointer;
     text-align: center;
-    margin: 16px auto;
+    margin: 24px auto;
     padding: 16px 20px 0px;
     line-height: 1.5;
     border-radius: $borderRadius;
@@ -130,15 +123,6 @@ export default {
         width: 100%;
         height: 100%;
         border-radius: $borderRadius;
-      }
-    }
-
-    .abstract {
-      text-align: left;
-      font-size: 0.9rem;
-
-      >>>img {
-        max-width: 100%;
       }
     }
   }

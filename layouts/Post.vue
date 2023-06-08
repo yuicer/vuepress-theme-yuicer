@@ -7,12 +7,7 @@
 
       <div class="tags">
         <div v-if="$page.frontmatter.tag">
-          <router-link
-            v-for="x in [].concat($page.frontmatter.tag)"
-            :key="x"
-            :to="$tag && $tag.list.find((y) => y.name === x).path"
-            >{{ x }}</router-link
-          >
+          <span>{{ $page.frontmatter.tag }}</span> 
         </div>
         <div class="time">
           <span>{{ time }}</span>
@@ -107,7 +102,7 @@ audio
     margin-bottom: 1.2rem;
     transition: color 0.2s;
 
-    a, span
+    span
       color: $tagColor;
       margin: 0 0.4rem;
       font-size: 0.7rem;

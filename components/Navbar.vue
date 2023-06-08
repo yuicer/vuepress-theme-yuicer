@@ -2,10 +2,10 @@
   <header class="navbar" :class="{ 'navbar-hidden': !isShow }">
     <SideBar :links="links" v-if="isShow && links"/>
     <router-link :to="$localePath" class="home-link">
-      <img
+      <div
         class="logo"
         v-if="$site.themeConfig.logo"
-        :src="$withBase($site.themeConfig.logo)"
+        :style="{backgroundImage:`url(${$withBase($site.themeConfig.logo)})`}"
         :alt="$siteTitle"
       />
       <span
@@ -63,12 +63,6 @@ export default {
   }
 }
 
-function css(el, property) {
-  // NOTE: Known bug, will return 'auto' if style value is 'auto'
-  const win = el.ownerDocument.defaultView
-  // null means not to return pseudo styles
-  return win.getComputedStyle(el, null)[property]
-}
 </script>
 
 <style lang="stylus">
@@ -103,6 +97,9 @@ $navbar-horizontal-padding = 1.5rem;
   }
 
   .logo {
+    display: inline-block;
+    background-size: cover;
+    background-color: rgba(0,0,0,0.1); 
     height: $navbarHeight - 1.4rem;
     min-width: $navbarHeight - 1.4rem;
     border-radius: 50%;
